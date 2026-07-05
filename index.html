@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ============================================================
+       SEO / OGP
+       ============================================================ -->
+  <title>IMP AI MARKETING｜AI自動マーケティング フルパッケージ - improvement</title>
+  <meta name="description" content="作って終わり、をやめる。HP・LP制作から多言語対応・AIチャットボット・PR・SEO・LLMO・GA4解析まで、売上を伸ばすためのWeb施策を一社でまるごと。AIが改善案を提案し、承認したものだけ実装する“改善し続ける”ホームページを。">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="IMP AI MARKETING｜AI自動マーケティング フルパッケージ">
+  <meta property="og:description" content="HP制作・多言語・AIチャットボット・PR・SEO・LLMO・GA4解析・AI自動改善。売上を上げるWeb施策、ぜんぶ入り。">
+  <meta property="og:site_name" content="improvement">
+  <!-- TODO: 要確認（公開URL確定後に差し替え） -->
+  <meta property="og:url" content="https://example.com/">
+  <!-- TODO: 要確認（OGP画像作成後に差し替え） -->
+  <meta property="og:image" content="https://example.com/ogp.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- フォント：和文 Noto Sans JP / 欧文見出し Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- ============================================================
+       構造化データ（JSON-LD）: Organization + Service
+       ============================================================ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "name": "improvement",
+        "alternateName": "IMP",
+        "url": "https://example.com/",
+        "description": "AI自動マーケティング フルパッケージ「IMP AI MARKETING」を提供。"
+      },
+      {
+        "@type": "Service",
+        "name": "IMP AI MARKETING（AI自動マーケティング フルパッケージ）",
+        "provider": { "@type": "Organization", "name": "improvement" },
+        "serviceType": "Webマーケティング支援",
+        "description": "HP/LP制作、多言語対応、AIチャットボット、プレスリリース配信、SEO、LLMO（AI検索最適化）、GA4解析、Microsoft Clarity×AIによる自動改善提案までを一括提供するフルパッケージ。"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<!-- ============================================================
+     ヘッダー（固定 / スクロールで縮小＋半透明ブラー）
+     ============================================================ -->
+<header class="header" id="header">
+  <div class="header__inner">
+    <a href="#top" class="header__logo" aria-label="improvement トップへ">
+      <!-- TODO: ロゴ画像が用意できたら差し替え（現状はテキストロゴ） -->
+      <span class="logo-mark">IMP</span>
+      <span class="logo-text">improvement</span>
+    </a>
+    <nav class="gnav" aria-label="グローバルナビゲーション">
+      <ul class="gnav__list">
+        <li><a href="#what">サービス</a></li>
+        <li><a href="#llmo">LLMO</a></li>
+        <li><a href="#how">AI改善の仕組み</a></li>
+        <li><a href="#pricing">料金</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <a href="#contact" class="btn btn--primary header__cta">無料相談</a>
+    <button class="menu-btn" id="menuBtn" aria-label="メニューを開く" aria-expanded="false" aria-controls="spMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <!-- スマホ用メニュー -->
+  <nav class="sp-menu" id="spMenu" aria-label="モバイルナビゲーション">
+    <ul>
+      <li><a href="#what">サービス</a></li>
+      <li><a href="#llmo">LLMO（AI検索最適化）</a></li>
+      <li><a href="#how">AI改善の仕組み</a></li>
+      <li><a href="#process">制作の流れ</a></li>
+      <li><a href="#pricing">料金プラン</a></li>
+      <li><a href="#faq">よくある質問</a></li>
+      <li><a href="#contact" class="sp-menu__cta">無料相談する</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+
+<!-- ============================================================
+     1. ヒーロー（メインビジュアル）
+     ============================================================ -->
+<section class="hero" id="hero">
+  <div class="hero__bg" aria-hidden="true">
+    <div class="hero__grid"></div>
+    <div class="hero__aurora hero__aurora--1"></div>
+    <div class="hero__aurora hero__aurora--2"></div>
+    <div class="hero__aurora hero__aurora--3"></div>
+  </div>
+  <div class="hero__inner">
+    <p class="section-label section-label--hero">IMPROVEMENT</p>
+    <h1 class="hero__title">
+      作って終わり、<br class="sp-only">をやめる<span class="hero__dot">。</span>
+    </h1>
+    <p class="hero__sub">
+      AIが毎月、売上の伸びしろを見つけて改善し続ける。<br>
+      HP・LP制作から多言語・SEO・LLMOまで、成果につながる“全部”を一社で。
+    </p>
+    <div class="hero__cta">
+      <a href="#contact" class="btn btn--primary btn--lg">無料相談する<span class="btn__arrow" aria-hidden="true">→</span></a>
+      <a href="#contact" class="btn btn--ghost btn--lg">資料ダウンロード</a>
+    </div>
+    <!-- 信頼バッジ（事実ベースのみ） -->
+    <ul class="hero__badges">
+      <li>8領域を<strong>ワンストップ</strong>提供</li>
+      <li>AI改善は<strong>承認制</strong>で安心</li>
+      <li><strong>多言語対応</strong>で商機を拡大</li>
+    </ul>
+  </div>
+  <div class="hero__scroll" aria-hidden="true"><span></span>SCROLL</div>
+</section>
+
+<!-- ============================================================
+     2. 課題提起（WHY）
+     ============================================================ -->
+<section class="section section--light" id="why">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="section-label">WHY</p>
+      <h2 class="section-title">作っただけのHPが、<br class="sp-only">なぜ売れないのか</h2>
+      <p class="section-lead">
+        ホームページは「公開した瞬間」がゴールではありません。<br class="pc-only">
+        多くの企業サイトが、こんな“もったいない状態”のまま止まっています。
+      </p>
+    </header>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <span class="why-card__num">01</span>
+        <h3>作ったきり、更新されない</h3>
+        <p>公開後に手を入れる体制がなく、情報も見た目も古いまま。訪問者の信頼を少しずつ失っていきます。</p>
+      </div>
+      <div class="why-card reveal">
+        <span class="why-card__num">02</span>
+        <h3>アクセスはあるのに、問い合わせがない</h3>
+        <p>どこで離脱しているのか分からず、直感で直しては元に戻す。改善が“当てずっぽう”になりがちです。</p>
+      </div>
+      <div class="why-card reveal">
+        <span class="why-card__num">03</span>
+        <h3>施策がバラバラで、全体像が見えない</h3>
+        <p>制作はA社、SEOはB社、広告はC社……。窓口が分かれると、施策同士が連携せず成果につながりにくくなります。</p>
+      </div>
+      <div class="why-card reveal">
+        <span class="why-card__num">04</span>
+        <h3>データはあるのに、活かせていない</h3>
+        <p>GA4を入れただけで満足していませんか。数字を「次の一手」に変える仕組みがなければ、宝の持ち腐れです。</p>
+      </div>
+    </div>
+    <p class="why-conclusion reveal">
+      足りないのは“制作力”ではなく、<strong>公開後も改善し続ける仕組み</strong>です。
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     3. 比較表（COMPARISON）
+     ============================================================ -->
+<section class="section section--dark" id="comparison">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="section-label">COMPARISON</p>
+      <h2 class="section-title">よくある発注先との違い</h2>
+      <p class="section-lead">「作る」だけでなく「売上を伸ばし続ける」まで。カバー範囲を比べてください。</p>
+    </header>
+    <div class="table-wrap reveal">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th scope="col" class="compare-table__axis"></th>
+            <th scope="col">自社対応・<br>フリーランス</th>
+            <th scope="col">一般的な<br>制作会社</th>
+            <th scope="col" class="is-ours"><span class="compare-table__brand">IMP AI MARKETING</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">HP / LP制作</th>
+            <td><span class="mark mark--tri">△</span><small>品質にばらつき</small></td>
+            <td><span class="mark mark--ok">○</span><small>制作は得意</small></td>
+            <td class="is-ours"><span class="mark mark--best">◎</span><small>売上導線まで設計</small></td>
+          </tr>
+          <tr>
+            <th scope="row">集客（SEO・PR）</th>
+            <td><span class="mark mark--ng">×</span><small>手が回らない</small></td>
+            <td><span class="mark mark--tri">△</span><small>別料金・別会社</small></td>
+            <td class="is-ours"><span class="mark mark--best">◎</span><small>SEO＋PR配信込み</small></td>
+          </tr>
+          <tr>
+            <th scope="row">多言語対応</th>
+            <td><span class="mark mark--ng">×</span></td>
+            <td><span class="mark mark--tri">△</span><small>オプション扱い</small></td>
+            <td class="is-ours"><span class="mark mark--best">◎</span><small>自動翻訳＋現地最適化</small></td>
+          </tr>
+          <tr>
+            <th scope="row">AI活用（チャットボット・LLMO）</th>
+            <td><span class="mark mark--ng">×</span></td>
+            <td><span class="mark mark--ng">×</span><small>未対応が多い</small></td>
+            <td class="is-ours"><span class="mark mark--best">◎</span><small>最先端領域まで標準</small></td>
+          </tr>
+          <tr>
+            <th scope="row">解析・改善</th>
+            <td><span class="mark mark--ng">×</span></td>
+            <td><span class="mark mark--tri">△</span><small>レポートのみ</small></td>
+            <td class="is-ours"><span class="mark mark--best">◎</span><small>AIが改善案を自動提案</small></td>
+          </tr>
+          <tr>
+            <th scope="row">運用体制</th>
+            <td><span class="mark mark--tri">△</span><small>属人化しがち</small></td>
+            <td><span class="mark mark--tri">△</span><small>保守のみ</small></td>
+            <td class="is-ours"><span class="mark mark--best">◎</span><small>改善込みの伴走型</small></td>
+          </tr>
+          <tr>
+            <th scope="row">成果への継続性</th>
+            <td><span class="mark mark--ng">×</span><small>作って終わり</small></td>
+            <td><span class="mark mark--tri">△</span><small>更新は別途依頼</small></td>
+            <td class="is-ours"><span class="mark mark--best">◎</span><small>改善ループが回り続ける</small></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- CTA帯 1 -->
+<section class="cta-band">
+  <div class="container cta-band__inner reveal">
+    <p class="cta-band__copy">まずは現状のサイトの“伸びしろ”を無料で診断</p>
+    <a href="#contact" class="btn btn--primary btn--lg">無料相談する<span class="btn__arrow" aria-hidden="true">→</span></a>
+    <p class="cta-band__note">オンラインで完結・ご相談だけでもOK</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     4. 提供価値 8本柱（WHAT WE DO）
+     ============================================================ -->
+<section class="section section--light" id="what">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="section-label">WHAT WE DO</p>
+      <h2 class="section-title">売上を上げる8つの領域を、<br class="sp-only">まるごと</h2>
+      <p class="section-lead">
+        点ではなく、線で売上を作る。<br class="pc-only">
+        制作・集客・接客・解析・改善——バラバラになりがちな施策を、一気通貫のパッケージとして提供します。
+      </p>
+    </header>
+    <div class="value-grid">
+      <!-- 1 HP/LP制作 -->
+      <article class="value-card reveal">
+        <div class="value-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8"/></svg>
+        </div>
+        <h3>HP / LP 制作</h3>
+        <p>売上を生む導線設計込みのサイト制作。「作って終わり」にしない前提で、改善しやすい構造から設計します。</p>
+      </article>
+      <!-- 2 多言語対応 -->
+      <article class="value-card reveal">
+        <div class="value-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9z"/></svg>
+        </div>
+        <h3>多言語対応</h3>
+        <p>自動翻訳＋現地最適化で、インバウンド・越境の商機を逃さない。海外のお客様にも“伝わる”サイトへ。</p>
+      </article>
+      <!-- 3 AIチャットボット -->
+      <article class="value-card reveal">
+        <div class="value-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-8 8H5l-2 2V12a8 8 0 0 1 8-8h2a8 8 0 0 1 8 8z"/><path d="M9 11h.01M13 11h.01M17 11h.01"/></svg>
+        </div>
+        <h3>AIチャットボット搭載</h3>
+        <p>24時間、見込み客を取りこぼさない自動接客・自動一次対応。営業時間外の問い合わせもチャンスに変えます。</p>
+      </article>
+      <!-- 4 プレスリリース -->
+      <article class="value-card reveal">
+        <div class="value-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-7-7 18-2.5-7.5L3 11z"/></svg>
+        </div>
+        <h3>プレスリリース配信</h3>
+        <p>露出と被リンクを同時に獲得。メディア掲載による認知拡大とSEO強化を、一手でねらいます。</p>
+      </article>
+      <!-- 5 SEO -->
+      <article class="value-card reveal">
+        <div class="value-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        </div>
+        <h3>SEO（検索エンジン最適化）</h3>
+        <p>検索から“買う気のある人”を継続的に集める内部・外部対策。広告費に頼らない集客の土台を作ります。</p>
+      </article>
+      <!-- 6 LLMO -->
+      <article class="value-card value-card--feature reveal">
+        <div class="value-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 5.9L20 10l-5.6 2.1L12 18l-2.4-5.9L4 10l5.6-2.1L12 2z"/><path d="M19 15l1 2.5L22.5 18 20 19l-1 2.5L18 19l-2.5-1 2.5-.5L19 15z"/></svg>
+        </div>
+        <h3>LLMO（AI検索最適化）</h3>
+        <p>ChatGPTなどの生成AIに「引用・推薦される」ための最先端対策。詳しくは<a href="#llmo">下の特集</a>へ。</p>
+        <span class="value-card__tag">差別化の切り札</span>
+      </article>
+      <!-- 7 GA4 -->
+      <article class="value-card reveal">
+        <div class="value-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg>
+        </div>
+        <h3>GA4解析</h3>
+        <p>GA4（Googleのアクセス解析ツール）で数字をもとに意思決定。どこで離脱し、どこを伸ばすかを可視化します。</p>
+      </article>
+      <!-- 8 Clarity + AI -->
+      <article class="value-card reveal">
+        <div class="value-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4a8 8 0 1 0 8 8"/><path d="M12 8a4 4 0 1 0 4 4"/><path d="M12 12l7-7M19 2v3h3"/></svg>
+        </div>
+        <h3>Clarity ＋ AI自動マーケ</h3>
+        <p>Microsoft Clarity（ヒートマップツール）×AIで改善案を自動提案。承認→実装のループで伸ばし続けます。</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     5. LLMO特集（差別化の山場）
+     ============================================================ -->
+<section class="section section--dark section--llmo" id="llmo">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="section-label">LLMO / AI SEARCH</p>
+      <h2 class="section-title">検索エンジンの次は、<br class="sp-only">“生成AIに選ばれる”時代</h2>
+      <p class="section-lead">
+        いま、商品やサービスを「ChatGPTに聞いて決める」人が増えています。<br class="pc-only">
+        LLMO（Large Language Model Optimization）とは、生成AIの回答に自社が<strong>引用・推薦されやすくする</strong>ための最適化のこと。<br class="pc-only">
+        検索結果の1位を目指すSEOの、さらに先を行く最先端の集客対策です。
+      </p>
+    </header>
+
+    <!-- 図解：ユーザー → 生成AI → 御社サイト -->
+    <div class="llmo-diagram reveal" role="img" aria-label="ユーザーが生成AIに質問し、生成AIがLLMO対策済みの御社サイトを引用・推薦する流れの図">
+      <div class="llmo-node">
+        <div class="llmo-node__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>
+        </div>
+        <p class="llmo-node__title">ユーザー</p>
+        <p class="llmo-node__desc">「おすすめの会社は？」<br>と生成AIに質問</p>
+      </div>
+      <div class="llmo-arrow" aria-hidden="true"><span>質問</span></div>
+      <div class="llmo-node llmo-node--ai">
+        <div class="llmo-node__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="7" width="14" height="12" rx="3"/><path d="M12 3v4M8 12h.01M16 12h.01M9 16h6"/></svg>
+        </div>
+        <p class="llmo-node__title">生成AI</p>
+        <p class="llmo-node__desc">ChatGPT・Gemini などが<br>情報源を選んで回答</p>
+      </div>
+      <div class="llmo-arrow" aria-hidden="true"><span>引用・推薦</span></div>
+      <div class="llmo-node llmo-node--you">
+        <div class="llmo-node__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg>
+        </div>
+        <p class="llmo-node__title">御社サイト</p>
+        <p class="llmo-node__desc">LLMO対策済みだから<br>回答に選ばれやすい</p>
+      </div>
+    </div>
+
+    <div class="llmo-points">
+      <div class="llmo-point reveal">
+        <h3>なぜ今、必要か</h3>
+        <p>生成AIで情報収集する流れは今後も拡大が見込まれます。競合がまだ手を付けていない今こそ、先行者として取り組む価値があります。</p>
+      </div>
+      <div class="llmo-point reveal">
+        <h3>何をするのか</h3>
+        <p>生成AIが理解しやすい構造化データの整備、引用されやすいコンテンツ設計、信頼性シグナルの強化などを体系的に実施します。</p>
+      </div>
+      <div class="llmo-point reveal">
+        <h3>SEOとの関係</h3>
+        <p>LLMOはSEOと対立するものではなく、地続きの施策。両方を一社で設計するからこそ、無駄なく相乗効果を目指せます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     6. AI自動マーケの仕組み（HOW IT WORKS）
+     ============================================================ -->
+<section class="section section--light" id="how">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="section-label">HOW IT WORKS</p>
+      <h2 class="section-title">GA4 × Clarity × AI の<br class="sp-only">改善ループ</h2>
+      <p class="section-lead">
+        公開してからが、本番。データとAIで「伸びしろ」を見つけ、改善し続ける仕組みです。
+      </p>
+    </header>
+    <ol class="how-steps">
+      <li class="how-step reveal">
+        <span class="how-step__num">STEP 1</span>
+        <div class="how-step__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M21 20H3"/></svg>
+        </div>
+        <h3>データ計測</h3>
+        <p>GA4とMicrosoft Clarityで、アクセス状況・クリック・スクロール・離脱ポイントを継続的に計測します。</p>
+      </li>
+      <li class="how-step reveal">
+        <span class="how-step__num">STEP 2</span>
+        <div class="how-step__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 1 4 10.5c-.7.6-1 1.5-1 2.5H9c0-1-.3-1.9-1-2.5A6 6 0 0 1 12 3z"/></svg>
+        </div>
+        <h3>AIが改善案を提案</h3>
+        <p>蓄積したデータをAIが分析し、「どこを・どう直すと伸びしろがあるか」を具体的な改善案としてご提案します。</p>
+      </li>
+      <li class="how-step reveal">
+        <span class="how-step__num">STEP 3</span>
+        <div class="how-step__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        </div>
+        <h3>承認したものだけ実装</h3>
+        <p>改善はすべて<strong>承認制</strong>。お客様がOKを出したものだけを実装するので、勝手にサイトが変わる心配はありません。</p>
+      </li>
+    </ol>
+    <p class="how-note reveal">この 計測 → 提案 → 実装 のループが毎月回り続けることで、サイトは“育ち続ける資産”になります。</p>
+  </div>
+</section>
+
+<!-- CTA帯 2 -->
+<section class="cta-band">
+  <div class="container cta-band__inner reveal">
+    <p class="cta-band__copy">「うちのサイトでも改善ループは回せる？」お気軽にどうぞ</p>
+    <a href="#contact" class="btn btn--primary btn--lg">無料相談する<span class="btn__arrow" aria-hidden="true">→</span></a>
+    <p class="cta-band__note">オンラインで完結・営業のみのご連絡はいたしません</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     7. 制作・運用フロー（PROCESS）
+     ============================================================ -->
+<section class="section section--dark" id="process">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="section-label">PROCESS</p>
+      <h2 class="section-title">ご契約から公開・運用までの流れ</h2>
+      <!-- TODO: 要確認（リードタイムの数字が確定したら差し替え） -->
+      <p class="section-lead">最短 <span class="placeholder-num">◯</span> 週間で公開<small>（規模・内容により変動します）</small></p>
+    </header>
+    <ol class="process-list">
+      <li class="process-item reveal">
+        <span class="process-item__num">01</span>
+        <div class="process-item__body">
+          <h3>無料相談・ヒアリング</h3>
+          <div class="process-item__roles">
+            <div class="role role--client"><span>お客様</span><p>現状の課題・目標・ターゲットをお聞かせください</p></div>
+            <div class="role role--us"><span>当社</span><p>現状サイトの簡易診断と、最適なプランをご提案</p></div>
+          </div>
+        </div>
+      </li>
+      <li class="process-item reveal">
+        <span class="process-item__num">02</span>
+        <div class="process-item__body">
+          <h3>戦略設計・構成案</h3>
+          <div class="process-item__roles">
+            <div class="role role--client"><span>お客様</span><p>構成案・ワイヤーフレームのご確認とフィードバック</p></div>
+            <div class="role role--us"><span>当社</span><p>売上導線・SEO/LLMOを踏まえた情報設計を作成</p></div>
+          </div>
+        </div>
+      </li>
+      <li class="process-item reveal">
+        <span class="process-item__num">03</span>
+        <div class="process-item__body">
+          <h3>デザイン・制作</h3>
+          <div class="process-item__roles">
+            <div class="role role--client"><span>お客様</span><p>デザイン確認・素材（写真・文言）のご提供</p></div>
+            <div class="role role--us"><span>当社</span><p>デザイン制作・コーディング・多言語/チャットボット組込み</p></div>
+          </div>
+        </div>
+      </li>
+      <li class="process-item reveal">
+        <span class="process-item__num">04</span>
+        <div class="process-item__body">
+          <h3>公開・各種設定</h3>
+          <div class="process-item__roles">
+            <div class="role role--client"><span>お客様</span><p>最終確認・公開のご承認</p></div>
+            <div class="role role--us"><span>当社</span><p>GA4・Clarity・SEO/LLMOの初期設定、プレスリリース配信</p></div>
+          </div>
+        </div>
+      </li>
+      <li class="process-item reveal">
+        <span class="process-item__num">05</span>
+        <div class="process-item__body">
+          <h3>AI改善運用スタート</h3>
+          <div class="process-item__roles">
+            <div class="role role--client"><span>お客様</span><p>AIの改善提案を確認して、承認するだけ</p></div>
+            <div class="role role--us"><span>当社</span><p>計測→提案→実装の改善ループを毎月運用</p></div>
+          </div>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============================================================
+     8. 定性メリット（VALUE）
+     ※ 実績数字が未確定のため、RESULTS（カウントアップ実績）を
+       本セクションに置換している。
+       TODO: 要確認（実績数字が確定したら、カウントアップ付きの
+       RESULTS セクションに差し替え） -->
+<section class="section section--light" id="value">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="section-label">VALUE</p>
+      <h2 class="section-title">IMPが選ばれる理由</h2>
+    </header>
+    <div class="merit-grid">
+      <div class="merit-card reveal">
+        <div class="merit-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l6-6 4 4 6-7"/><path d="M15 8h5v5"/></svg>
+        </div>
+        <h3>一気通貫だから、<br>施策がつながる</h3>
+        <p>制作・集客・接客・解析を一社で設計するから、施策同士が噛み合い、窓口もひとつ。連携ロスなく成果を目指せます。</p>
+      </div>
+      <div class="merit-card reveal">
+        <div class="merit-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v5h-5"/></svg>
+        </div>
+        <h3>公開後も、<br>改善が止まらない</h3>
+        <p>GA4×Clarity×AIの改善ループが毎月回り続ける。「作って終わり」ではなく、サイトが育ち続ける仕組みです。</p>
+      </div>
+      <div class="merit-card reveal">
+        <div class="merit-card__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 5.9L20 10l-5.6 2.1L12 18l-2.4-5.9L4 10l5.6-2.1L12 2z"/></svg>
+        </div>
+        <h3>最先端のLLMOに、<br>いち早く着手できる</h3>
+        <p>生成AIに“選ばれる”ための対策を標準搭載。競合がまだ動いていない領域で、先行者の優位を築けます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     9. お客様の声（VOICE）
+     TODO: 要確認（実際のお客様の声・写真に差し替え。
+     掲載許可の取得を忘れずに） -->
+<section class="section section--light section--voice" id="voice">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="section-label">VOICE</p>
+      <h2 class="section-title">お客様の声</h2>
+    </header>
+    <div class="voice-grid">
+      <article class="voice-card reveal">
+        <div class="voice-card__photo" aria-hidden="true"><span>Photo</span></div>
+        <h3 class="voice-card__title">「数字で提案してくれるので、社内の説明がラクになりました」</h3>
+        <p class="voice-card__text">これまで感覚で直していたサイトを、データ根拠つきの改善案で提案してもらえるように。改善の方針を社内で共有しやすくなりました。</p>
+        <p class="voice-card__meta"><!-- TODO: 要確認 -->○○業・経営者</p>
+      </article>
+      <article class="voice-card reveal">
+        <div class="voice-card__photo" aria-hidden="true"><span>Photo</span></div>
+        <h3 class="voice-card__title">「窓口がひとつになって、施策のスピードが上がりました」</h3>
+        <p class="voice-card__text">制作・SEO・解析を別々の会社に頼んでいた頃と比べて、やり取りの手間が大幅に減少。施策の意思決定が速くなったと感じています。</p>
+        <p class="voice-card__meta"><!-- TODO: 要確認 -->○○業・マーケティング担当</p>
+      </article>
+      <article class="voice-card reveal">
+        <div class="voice-card__photo" aria-hidden="true"><span>Photo</span></div>
+        <h3 class="voice-card__title">「承認制なので、安心して任せられます」</h3>
+        <p class="voice-card__text">AIの提案はすべて承認してから反映される仕組みなので、勝手にサイトが変わる不安がありません。多言語対応も一緒に進められて助かっています。</p>
+        <p class="voice-card__meta"><!-- TODO: 要確認 -->○○業・店舗運営</p>
+      </article>
+    </div>
+    <p class="voice-note reveal">※ 個人の感想であり、成果をお約束するものではありません。</p>
+  </div>
+</section>
+
+<!-- CTA帯 3 -->
+<section class="cta-band">
+  <div class="container cta-band__inner reveal">
+    <p class="cta-band__copy">貴社の業種・目的に合わせたプランをご提案します</p>
+    <a href="#contact" class="btn btn--primary btn--lg">無料相談する<span class="btn__arrow" aria-hidden="true">→</span></a>
+    <p class="cta-band__note">オンラインで完結・しつこい営業はいたしません</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     10. 料金プラン（PRICING）
+     TODO: 要確認（各プランの金額・内訳・初期費用・最低契約期間） -->
+<section class="section section--dark" id="pricing">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="section-label">PRICING</p>
+      <h2 class="section-title">料金プラン</h2>
+      <p class="section-lead">目的と規模に合わせて選べる3プラン。迷ったら無料相談で最適な組み合わせをご提案します。</p>
+    </header>
+    <div class="pricing-grid">
+      <!-- STARTER -->
+      <article class="pricing-card reveal">
+        <h3 class="pricing-card__name">STARTER</h3>
+        <p class="pricing-card__desc">まずは“売れる土台”を作りたい方に</p>
+        <p class="pricing-card__price"><span class="placeholder-num">¥---,---</span><small>/月（税込）</small></p>
+        <!-- TODO: 要確認（金額） -->
+        <ul class="pricing-card__list">
+          <li class="is-on">HP / LP 制作</li>
+          <li class="is-on">基本SEO設定</li>
+          <li class="is-on">GA4導入・基本レポート</li>
+          <li class="is-off">多言語対応</li>
+          <li class="is-off">AIチャットボット</li>
+          <li class="is-off">LLMO対策</li>
+          <li class="is-off">AI自動改善ループ</li>
+        </ul>
+        <a href="#contact" class="btn btn--ghost pricing-card__btn">このプランを相談する</a>
+      </article>
+      <!-- GROWTH（おすすめ） -->
+      <article class="pricing-card pricing-card--featured reveal">
+        <span class="pricing-card__badge">おすすめ</span>
+        <h3 class="pricing-card__name">GROWTH</h3>
+        <p class="pricing-card__desc">集客と改善で“伸ばしたい”方に</p>
+        <p class="pricing-card__price"><span class="placeholder-num">¥---,---</span><small>/月（税込）</small></p>
+        <!-- TODO: 要確認（金額） -->
+        <ul class="pricing-card__list">
+          <li class="is-on">HP / LP 制作</li>
+          <li class="is-on">SEO（内部・外部対策）</li>
+          <li class="is-on">GA4 ＋ Clarity 解析</li>
+          <li class="is-on">AI自動改善ループ（承認制）</li>
+          <li class="is-on">AIチャットボット</li>
+          <li class="is-off">多言語対応</li>
+          <li class="is-off">LLMO対策・PR配信</li>
+        </ul>
+        <a href="#contact" class="btn btn--primary pricing-card__btn">このプランを相談する</a>
+      </article>
+      <!-- FULL PACKAGE -->
+      <article class="pricing-card reveal">
+        <h3 class="pricing-card__name">FULL PACKAGE</h3>
+        <p class="pricing-card__desc">8領域すべてを“まるごと”任せたい方に</p>
+        <p class="pricing-card__price"><span class="placeholder-num">¥---,---</span><small>/月（税込）</small></p>
+        <!-- TODO: 要確認（金額） -->
+        <ul class="pricing-card__list">
+          <li class="is-on">HP / LP 制作</li>
+          <li class="is-on">多言語対応</li>
+          <li class="is-on">AIチャットボット</li>
+          <li class="is-on">プレスリリース配信</li>
+          <li class="is-on">SEO ＋ LLMO対策</li>
+          <li class="is-on">GA4 ＋ Clarity 解析</li>
+          <li class="is-on">AI自動改善ループ（承認制）</li>
+        </ul>
+        <a href="#contact" class="btn btn--ghost pricing-card__btn">このプランを相談する</a>
+      </article>
+    </div>
+    <!-- TODO: 要確認（初期費用・最低契約期間・解約条件） -->
+    <p class="pricing-note reveal">※ 初期費用・最低契約期間については無料相談時にご案内します。表示価格・内容は変更となる場合があります。</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     11. オプション（OPTIONS）
+     TODO: 要確認（提供可能なオプション項目の確定） -->
+<section class="section section--dark section--options" id="options">
+  <div class="container">
+    <header class="section-head reveal">
+      <p class="section-label">OPTIONS</p>
+      <h2 class="section-title">こんなご相談も</h2>
+      <p class="section-lead">プランに含まれない施策も、お気軽にご相談ください。</p>
+    </header>
+    <ul class="option-chips reveal">
+      <li>記事制作（コンテンツSEO）</li>
+      <li>Web広告運用</li>
+      <li>SNS運用サポート</li>
+      <li>MEO（マップ検索対策）</li>
+      <li>ECサイト構築</li>
+      <li>予約システム導入</li>
+      <li>写真・動画撮影</li>
+      <li>採用サイト制作</li>
+      <li>メールマガジン運用</li>
+      <li>既存サイトのリニューアル</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================
+     12. FAQ（アコーディオン）
+     ============================================================ -->
+<section class="section section--light" id="faq">
+  <div class="container container--narrow">
+    <header class="section-head reveal">
+      <p class="section-label">FAQ</p>
+      <h2 class="section-title">よくある質問</h2>
+    </header>
+
+    <h3 class="faq-category reveal">サービスについて</h3>
+    <div class="faq-list">
+      <details class="faq-item reveal">
+        <summary>Web の知識がなくても大丈夫ですか？<span class="faq-item__icon" aria-hidden="true"></span></summary>
+        <div class="faq-item__body"><p>はい、ご安心ください。専門用語をできるだけ使わずにご説明し、運用開始後も「AIの提案を確認して承認する」だけで改善が進む仕組みです。</p></div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>LLMO とは何ですか？ SEO と何が違いますか？<span class="faq-item__icon" aria-hidden="true"></span></summary>
+        <div class="faq-item__body"><p>LLMO は ChatGPT などの生成AIの回答に自社が引用・推薦されやすくするための最適化です。検索エンジンで上位を目指す SEO と地続きの施策で、当社では両方をまとめて設計します。</p></div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>AI が勝手にサイトを書き換えることはありませんか？<span class="faq-item__icon" aria-hidden="true"></span></summary>
+        <div class="faq-item__body"><p>ありません。AI はあくまで「改善案の提案」までを行い、実際の反映はお客様が承認したものだけです。</p></div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>既存のホームページを活かしたまま依頼できますか？<span class="faq-item__icon" aria-hidden="true"></span></summary>
+        <div class="faq-item__body"><p>可能です。既存サイトの解析・改善運用のみのご依頼や、部分的なリニューアルのご相談も承ります。まずは現状を拝見してご提案します。</p></div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>多言語対応はどの言語に対応していますか？<span class="faq-item__icon" aria-hidden="true"></span></summary>
+        <div class="faq-item__body"><p>英語・中国語をはじめ、ターゲット市場に合わせてご提案します。対応言語の詳細は無料相談時にご確認ください。<!-- TODO: 要確認（対応言語の確定リスト） --></p></div>
+      </details>
+    </div>
+
+    <h3 class="faq-category reveal">契約・料金について</h3>
+    <div class="faq-list">
+      <details class="faq-item reveal">
+        <summary>料金はどのように決まりますか？<span class="faq-item__icon" aria-hidden="true"></span></summary>
+        <div class="faq-item__body"><p>ページ数・対応領域・運用範囲によって変動します。無料相談でご要望を伺ったうえで、お見積りをご提示します。</p></div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>最低契約期間はありますか？<span class="faq-item__icon" aria-hidden="true"></span></summary>
+        <div class="faq-item__body"><p>プランにより異なります。詳細は無料相談時にご案内します。<!-- TODO: 要確認（最低契約期間） --></p></div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>制作のみ・運用のみの依頼はできますか？<span class="faq-item__icon" aria-hidden="true"></span></summary>
+        <div class="faq-item__body"><p>可能です。ただし、当社の強みは「制作＋改善運用」の一気通貫にありますので、目的に合わせて最適な範囲をご提案させてください。</p></div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>途中でプランの変更はできますか？<span class="faq-item__icon" aria-hidden="true"></span></summary>
+        <div class="faq-item__body"><p>はい、事業の成長段階に合わせてプランの見直し・変更のご相談を承ります。</p></div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>相談だけでも費用はかかりませんか？<span class="faq-item__icon" aria-hidden="true"></span></summary>
+        <div class="faq-item__body"><p>初回のご相談は無料です。ご相談の結果、ご契約に至らなくても費用は一切かかりません。</p></div>
+      </details>
+    </div>
+  </div>
+
+  <!-- FAQ 構造化データ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Webの知識がなくても大丈夫ですか？", "acceptedAnswer": { "@type": "Answer", "text": "はい、ご安心ください。専門用語をできるだけ使わずにご説明し、運用開始後も「AIの提案を確認して承認する」だけで改善が進む仕組みです。" } },
+      { "@type": "Question", "name": "LLMOとは何ですか？SEOと何が違いますか？", "acceptedAnswer": { "@type": "Answer", "text": "LLMOはChatGPTなどの生成AIの回答に自社が引用・推薦されやすくするための最適化です。検索エンジンで上位を目指すSEOと地続きの施策で、当社では両方をまとめて設計します。" } },
+      { "@type": "Question", "name": "AIが勝手にサイトを書き換えることはありませんか？", "acceptedAnswer": { "@type": "Answer", "text": "ありません。AIはあくまで「改善案の提案」までを行い、実際の反映はお客様が承認したものだけです。" } },
+      { "@type": "Question", "name": "料金はどのように決まりますか？", "acceptedAnswer": { "@type": "Answer", "text": "ページ数・対応領域・運用範囲によって変動します。無料相談でご要望を伺ったうえで、お見積りをご提示します。" } },
+      { "@type": "Question", "name": "相談だけでも費用はかかりませんか？", "acceptedAnswer": { "@type": "Answer", "text": "初回のご相談は無料です。ご相談の結果、ご契約に至らなくても費用は一切かかりません。" } }
+    ]
+  }
+  </script>
+</section>
+
+<!-- ============================================================
+     13. 最終CTA + 無料相談フォーム（CONTACT）
+     ============================================================ -->
+<section class="section section--contact" id="contact">
+  <div class="contact__bg" aria-hidden="true"></div>
+  <div class="container container--narrow">
+    <header class="section-head reveal">
+      <p class="section-label">CONTACT</p>
+      <h2 class="section-title section-title--contact">改善に、終わりはない。<br>まずは無料相談から。</h2>
+      <p class="section-lead">
+        現状サイトの伸びしろ診断・お見積り・「話を聞いてみたいだけ」——すべて歓迎です。<br class="pc-only">
+        オンラインで完結。しつこい営業はいたしません。
+      </p>
+    </header>
+
+    <!-- TODO: 要確認（フォームの送信先。action にフォームURL/エンドポイントを設定） -->
+    <form class="contact-form reveal" action="#" method="post" id="contactForm">
+      <div class="form-row">
+        <label for="f-name">お名前 <span class="req">必須</span></label>
+        <input type="text" id="f-name" name="name" autocomplete="name" required placeholder="山田 太郎">
+      </div>
+      <div class="form-row">
+        <label for="f-company">会社名</label>
+        <input type="text" id="f-company" name="company" autocomplete="organization" placeholder="株式会社◯◯">
+      </div>
+      <div class="form-row">
+        <label for="f-tel">電話番号</label>
+        <input type="tel" id="f-tel" name="tel" autocomplete="tel" placeholder="090-1234-5678">
+      </div>
+      <div class="form-row">
+        <label for="f-mail">メールアドレス <span class="req">必須</span></label>
+        <input type="email" id="f-mail" name="email" autocomplete="email" required placeholder="info@example.com">
+      </div>
+      <div class="form-row">
+        <label for="f-message">ご相談内容 <span class="req">必須</span></label>
+        <textarea id="f-message" name="message" rows="5" required placeholder="例）既存サイトのリニューアルと集客改善を検討しています"></textarea>
+      </div>
+      <div class="form-row">
+        <label for="f-trigger">当社を知ったきっかけ</label>
+        <select id="f-trigger" name="trigger">
+          <option value="">選択してください</option>
+          <option>検索エンジン</option>
+          <option>生成AI（ChatGPTなど）</option>
+          <option>SNS</option>
+          <option>紹介</option>
+          <option>その他</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn--primary btn--lg contact-form__submit">無料相談を申し込む<span class="btn__arrow" aria-hidden="true">→</span></button>
+      <p class="contact-form__note">送信いただいた情報は、お問い合わせ対応の目的にのみ使用します。</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     14. フッター
+     ============================================================ -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <p class="footer__logo"><span class="logo-mark">IMP</span> improvement</p>
+      <p class="footer__tagline">Keep improving. ― 改善に、終わりはない。</p>
+      <!-- TODO: 要確認（運営会社・TEL・Mail・住所） -->
+      <p class="footer__company">運営会社：<span class="placeholder-num">要確認</span><br>
+        TEL：<span class="placeholder-num">要確認</span> ／ Mail：<span class="placeholder-num">要確認</span></p>
+    </div>
+    <nav class="footer__nav" aria-label="フッターナビゲーション">
+      <ul>
+        <li><a href="#why">課題提起</a></li>
+        <li><a href="#what">サービス</a></li>
+        <li><a href="#llmo">LLMO</a></li>
+        <li><a href="#how">AI改善の仕組み</a></li>
+      </ul>
+      <ul>
+        <li><a href="#process">制作の流れ</a></li>
+        <li><a href="#pricing">料金プラン</a></li>
+        <li><a href="#faq">よくある質問</a></li>
+        <li><a href="#contact">無料相談</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="footer__bottom">
+    <!-- TODO: 要確認（プライバシーポリシーのURL） -->
+    <a href="#">プライバシーポリシー</a>
+    <p>&copy; <span id="copyYear">2026</span> improvement All Rights Reserved.</p>
+  </div>
+</footer>
+
+<!-- スマホ用 固定CTAバー -->
+<div class="sp-cta-bar" id="spCtaBar">
+  <a href="#contact" class="btn btn--primary sp-cta-bar__btn">無料相談する</a>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
