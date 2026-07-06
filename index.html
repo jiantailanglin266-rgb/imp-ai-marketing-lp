@@ -849,6 +849,39 @@
   <a href="#contact" class="btn btn--primary sp-cta-bar__btn">無料相談する</a>
 </div>
 
+<!-- ============================================================
+     チャットボット（ルールベースの自動応答デモ）
+     TODO: 要確認（本番のAIチャットボットに差し替える場合は
+     このブロックと script.js のチャットボット部を置き換え）
+     ============================================================ -->
+<div class="chatbot" id="chatbot">
+  <button class="chatbot__launcher" id="chatLauncher" aria-label="チャットで質問する" aria-expanded="false" aria-controls="chatPanel">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-8 8H5l-2 2V12a8 8 0 0 1 8-8h2a8 8 0 0 1 8 8z"/><path d="M9 11h.01M13 11h.01M17 11h.01"/></svg>
+    <span class="chatbot__launcher-badge" aria-hidden="true">AI</span>
+  </button>
+
+  <div class="chatbot__panel" id="chatPanel" role="dialog" aria-label="IMP AIアシスタント" hidden>
+    <div class="chatbot__head">
+      <span class="chatbot__avatar" aria-hidden="true">IMP</span>
+      <div class="chatbot__head-text">
+        <p class="chatbot__title">IMP AIアシスタント</p>
+        <p class="chatbot__status"><span class="chatbot__dot" aria-hidden="true"></span>自動応答デモ</p>
+      </div>
+      <button class="chatbot__close" id="chatClose" aria-label="チャットを閉じる">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="chatbot__log" id="chatLog" aria-live="polite"></div>
+    <div class="chatbot__quick" id="chatQuick" aria-label="よくある質問から選ぶ"></div>
+    <form class="chatbot__form" id="chatForm">
+      <input type="text" id="chatInput" placeholder="質問を入力してください" autocomplete="off" aria-label="質問を入力" maxlength="200">
+      <button type="submit" class="chatbot__send" aria-label="送信">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l18-7-7 18-2.5-7.5L3 11z"/></svg>
+      </button>
+    </form>
+  </div>
+</div>
+
 <script src="script.js"></script>
 </body>
 </html>
