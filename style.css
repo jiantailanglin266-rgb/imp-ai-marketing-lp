@@ -735,6 +735,90 @@ small { font-size: 0.75em; }
 .voice-note { margin-top: 24px; text-align: center; font-size: 11.5px; color: var(--muted-dark); }
 
 /* ============================================================
+   IMPからのお約束（ブランドメッセージ）
+   ============================================================ */
+.promise-eyebrow {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted-dark);
+  letter-spacing: 0.14em;
+  margin-bottom: 14px;
+}
+.promise-body {
+  text-align: center;
+  font-size: 15px;
+  line-height: 2.2;
+  color: var(--muted-dark);
+}
+.promise-body p + p { margin-top: 1.2em; }
+.promise-block + .promise-block { margin-top: 56px; }
+.promise-body strong {
+  color: var(--text-dark);
+  font-weight: 700;
+  background: linear-gradient(transparent 70%, rgba(34, 230, 211, 0.3) 70%);
+  padding: 0 2px;
+}
+
+/* ミッションステートメント（冒頭の一番大事な一文） */
+.promise-statement {
+  font-size: clamp(16px, 4.4vw, 20px);
+  font-weight: 700;
+  line-height: 2.1;
+  color: var(--text-dark);
+}
+.promise-statement strong {
+  font-size: 1.15em;
+  background: linear-gradient(transparent 68%, rgba(34, 230, 211, 0.35) 68%);
+}
+
+/* 小見出し：上に短いグラデバーを立てる */
+.promise-subtitle {
+  font-size: clamp(18px, 4.6vw, 24px);
+  font-weight: 900;
+  line-height: 1.6;
+  color: var(--text-dark);
+  margin-bottom: 28px;
+}
+.promise-subtitle::before {
+  content: "";
+  display: block;
+  width: 36px;
+  height: 3px;
+  margin: 0 auto 18px;
+  border-radius: 2px;
+  background: var(--grad-rise);
+}
+
+/* 提供領域チップ（明るいセクション用） */
+.promise-services {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+.promise-services li {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-dark);
+  background: #F4F6FB;
+  border: 1px solid var(--border-dark);
+  border-radius: 999px;
+  padding: 8px 18px;
+  line-height: 1.6;
+}
+
+/* 締め：署名とCTA */
+.promise-block--closing { margin-top: 72px; }
+.promise-sign {
+  margin: 36px 0;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: var(--text-dark);
+}
+
+/* ============================================================
    PRICING（料金プラン）
    ============================================================ */
 .pricing-grid { display: grid; gap: 24px; align-items: stretch; }
