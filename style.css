@@ -413,6 +413,60 @@ small { font-size: 0.75em; }
 .section-visual__img { width: 100%; height: auto; display: block; }
 
 /* ============================================================
+   無限マーキー（画像帯が自動で左へ流れ続ける）
+   速度・高さ・間隔は下の3変数だけで調整できる
+   ============================================================ */
+.marquee {
+  --marquee-duration: 48s;   /* 1ループの時間。大きいほどゆっくり */
+  --marquee-height: 220px;   /* 画像の高さ */
+  --marquee-gap: 16px;       /* 画像同士の間隔 */
+  overflow: hidden;
+  background: var(--navy);
+  padding: 30px 0;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+/* トラック2本を横に連結する外枠 */
+.marquee__viewport {
+  display: flex;
+  gap: var(--marquee-gap);
+  width: max-content;
+}
+.marquee__track {
+  display: flex;
+  gap: var(--marquee-gap);
+  margin: 0; padding: 0; list-style: none;
+  will-change: transform;
+  animation: marqueeScroll var(--marquee-duration) linear infinite;
+}
+.marquee__item img {
+  height: var(--marquee-height);
+  width: auto;
+  aspect-ratio: 3 / 2;       /* 実画像の縦横比が違っても帯が揃うよう固定 */
+  object-fit: cover;
+  display: block;
+  border-radius: 14px;
+  border: 1px solid var(--border-light);
+}
+/* ホバーで一時停止（2本とも止める） */
+.marquee:hover .marquee__track { animation-play-state: paused; }
+/* トラック1本ぶん＋gap だけ動かすと、複製トラックが元の位置に重なり継ぎ目が消える */
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-100% - var(--marquee-gap))); }
+}
+/* モバイル：小さめ・気持ち速め */
+@media (max-width: 600px) {
+  .marquee { --marquee-height: 140px; --marquee-gap: 10px; --marquee-duration: 34s; padding: 20px 0; }
+}
+/* モーション配慮：自動再生を止め、手動の横スクロールで見られるようにする */
+@media (prefers-reduced-motion: reduce) {
+  .marquee__viewport { overflow-x: auto; width: auto; }
+  .marquee__track { animation: none; }
+  .marquee__track[aria-hidden="true"] { display: none; }
+}
+
+/* ============================================================
    COMPARISON（比較表）
    ============================================================ */
 .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: var(--radius); }

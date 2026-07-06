@@ -137,6 +137,39 @@
 </section>
 
 <!-- ============================================================
+     無限マーキー（画像帯が自動で左へ流れ続けるギャラリー）
+     TODO: 要確認（images/marquee/01.jpg〜08.jpg は仮画像。
+     実画像を同じファイル名で上書きすればHTMLの変更は不要。
+     枚数を変える場合は下のセットA・Bを同じ内容に揃えること）
+     ============================================================ -->
+<section class="marquee" aria-label="ギャラリー">
+  <div class="marquee__viewport">
+    <!-- 画像セットA -->
+    <ul class="marquee__track">
+      <li class="marquee__item"><img src="images/marquee/01.jpg" width="900" height="600" alt="" loading="lazy" decoding="async"></li>
+      <li class="marquee__item"><img src="images/marquee/02.jpg" width="900" height="600" alt="" loading="lazy" decoding="async"></li>
+      <li class="marquee__item"><img src="images/marquee/03.jpg" width="900" height="600" alt="" loading="lazy" decoding="async"></li>
+      <li class="marquee__item"><img src="images/marquee/04.jpg" width="900" height="600" alt="" loading="lazy" decoding="async"></li>
+      <li class="marquee__item"><img src="images/marquee/05.jpg" width="900" height="600" alt="" loading="lazy" decoding="async"></li>
+      <li class="marquee__item"><img src="images/marquee/06.jpg" width="900" height="600" alt="" loading="lazy" decoding="async"></li>
+      <li class="marquee__item"><img src="images/marquee/07.jpg" width="900" height="600" alt="" loading="lazy" decoding="async"></li>
+      <li class="marquee__item"><img src="images/marquee/08.jpg" width="900" height="600" alt="" loading="lazy" decoding="async"></li>
+    </ul>
+    <!-- 画像セットB（Aの完全複製。ループの継ぎ目を消すためのもの） -->
+    <ul class="marquee__track" aria-hidden="true">
+      <li class="marquee__item"><img src="images/marquee/01.jpg" width="900" height="600" alt="" loading="lazy" decoding="async"></li>
+      <li class="marquee__item"><img src="images/marquee/02.jpg" width="900" height="600" alt="" loading="lazy" decoding="async"></li>
+      <li class="marquee__item"><img src="images/marquee/03.jpg" width="900" height="600" alt="" loading="lazy" decoding="async"></li>
+      <li class="marquee__item"><img src="images/marquee/04.jpg" width="900" height="600" alt="" loading="lazy" decoding="async"></li>
+      <li class="marquee__item"><img src="images/marquee/05.jpg" width="900" height="600" alt="" loading="lazy" decoding="async"></li>
+      <li class="marquee__item"><img src="images/marquee/06.jpg" width="900" height="600" alt="" loading="lazy" decoding="async"></li>
+      <li class="marquee__item"><img src="images/marquee/07.jpg" width="900" height="600" alt="" loading="lazy" decoding="async"></li>
+      <li class="marquee__item"><img src="images/marquee/08.jpg" width="900" height="600" alt="" loading="lazy" decoding="async"></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================
      3. 比較表（COMPARISON）
      ============================================================ -->
 <section class="section section--dark" id="comparison">
