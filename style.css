@@ -403,43 +403,14 @@ small { font-size: 0.75em; }
 }
 
 /* ============================================================
-   WHY（課題提起）
+   WHY（課題提起）── デザイン画像を丸ごと表示するセクション
    ============================================================ */
-.why-grid { display: grid; gap: 20px; }
-.why-card {
-  position: relative;
-  border: 1px solid var(--border-dark);
-  border-radius: var(--radius);
-  padding: 30px 26px 26px;
-  background: #fff;
-  box-shadow: 0 2px 10px rgba(11, 16, 32, 0.04);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.section-visual {
+  /* 画像読み込み中の白フラッシュを防ぐため、画像上部と同系のネイビーを敷く */
+  background: var(--navy);
+  line-height: 0;
 }
-.why-card:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(11, 16, 32, 0.1); }
-.why-card__num {
-  font-family: var(--font-en);
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.1em;
-  background: var(--grad-rise);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-.why-card h3 { font-size: 17px; font-weight: 700; margin: 8px 0 10px; line-height: 1.5; }
-.why-card p { font-size: 14px; color: var(--muted-dark); }
-
-.why-conclusion {
-  margin-top: 44px;
-  text-align: center;
-  font-size: clamp(16px, 4.2vw, 21px);
-  font-weight: 700;
-  line-height: 1.7;
-}
-.why-conclusion strong {
-  background: linear-gradient(transparent 68%, rgba(34, 230, 211, 0.35) 68%);
-  padding: 0 2px;
-}
+.section-visual__img { width: 100%; height: auto; display: block; }
 
 /* ============================================================
    COMPARISON（比較表）
