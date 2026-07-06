@@ -537,86 +537,6 @@ small { font-size: 0.75em; }
 }
 
 /* ============================================================
-   LLMO特集
-   ============================================================ */
-.section--llmo {
-  background:
-    radial-gradient(1000px 600px at 50% -20%, rgba(138, 92, 255, 0.2), transparent 60%),
-    radial-gradient(800px 500px at 90% 110%, rgba(34, 230, 211, 0.08), transparent 60%),
-    var(--navy);
-}
-
-/* 図解：ユーザー → 生成AI → 御社 */
-.llmo-diagram {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 4px;
-  margin-bottom: 56px;
-}
-.llmo-node {
-  flex: 1;
-  text-align: center;
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(6px);
-  padding: 28px 20px;
-}
-.llmo-node__icon {
-  width: 56px; height: 56px;
-  margin: 0 auto 14px;
-  display: grid; place-content: center;
-  border-radius: 50%;
-  border: 1px solid var(--border-light);
-  color: var(--text-light);
-}
-.llmo-node__icon svg { width: 28px; height: 28px; }
-.llmo-node__title { font-weight: 700; font-size: 16px; }
-.llmo-node__desc { font-size: 12.5px; color: var(--muted-light); margin-top: 6px; line-height: 1.7; }
-
-.llmo-node--ai { border-color: rgba(138, 92, 255, 0.5); background: linear-gradient(160deg, rgba(61, 108, 255, 0.12), rgba(138, 92, 255, 0.12)); }
-.llmo-node--ai .llmo-node__icon { background: var(--grad); border: 0; color: #fff; }
-.llmo-node--you { border-color: rgba(34, 230, 211, 0.5); box-shadow: 0 0 30px rgba(34, 230, 211, 0.12); }
-.llmo-node--you .llmo-node__icon { color: var(--cyan); border-color: rgba(34, 230, 211, 0.5); }
-.llmo-node--you .llmo-node__title { color: var(--cyan); }
-
-.llmo-arrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 6px 0;
-  position: relative;
-  color: var(--cyan);
-}
-.llmo-arrow::before {
-  content: "↓";
-  font-size: 22px;
-  font-weight: 700;
-  animation: pulseArrow 1.8s ease-in-out infinite;
-}
-.llmo-arrow span {
-  font-size: 11px;
-  font-weight: 700;
-  margin-left: 10px;
-  color: var(--muted-light);
-  letter-spacing: 0.08em;
-}
-@keyframes pulseArrow {
-  0%, 100% { opacity: 0.4; transform: translateY(-2px); }
-  50% { opacity: 1; transform: translateY(2px); }
-}
-
-.llmo-points { display: grid; gap: 20px; }
-.llmo-point {
-  border-left: 3px solid;
-  border-image: linear-gradient(to bottom, var(--blue), var(--violet)) 1;
-  padding: 4px 0 4px 20px;
-}
-.llmo-point h3 { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 8px; }
-.llmo-point p { font-size: 14px; color: var(--muted-light); }
-
-/* ============================================================
    HOW IT WORKS（改善ループ3ステップ）
    ============================================================ */
 .how-steps { display: grid; gap: 20px; counter-reset: step; }
@@ -1294,23 +1214,14 @@ small { font-size: 0.75em; }
    ============================================================ */
 @media (min-width: 601px) {
   .section { padding: 110px 0; }
-  .why-grid { grid-template-columns: repeat(2, 1fr); }
   .value-grid { grid-template-columns: repeat(2, 1fr); }
   .how-steps { grid-template-columns: repeat(3, 1fr); }
   .merit-grid { grid-template-columns: repeat(3, 1fr); }
   .voice-grid { grid-template-columns: repeat(3, 1fr); }
-  .llmo-points { grid-template-columns: repeat(3, 1fr); }
   .hero__cta { flex-direction: row; justify-content: center; }
   .contact-form { padding: 48px 44px; }
   .footer__inner { grid-template-columns: 1.2fr 1fr; align-items: start; padding-top: 8px; }
   .footer__bottom { flex-direction: row; justify-content: space-between; padding: 20px 40px; }
-
-  /* LLMO図解を横並びに */
-  .llmo-diagram { flex-direction: row; align-items: stretch; gap: 0; }
-  .llmo-node { display: flex; flex-direction: column; justify-content: flex-start; }
-  .llmo-arrow { flex-direction: column; padding: 0 10px; min-width: 86px; }
-  .llmo-arrow::before { content: "→"; }
-  .llmo-arrow span { margin: 6px 0 0; text-align: center; }
 }
 
 /* ============================================================
@@ -1327,7 +1238,6 @@ small { font-size: 0.75em; }
   .chatbot { right: 24px; bottom: 24px; }
 
   .value-grid { grid-template-columns: repeat(4, 1fr); }
-  .why-grid { grid-template-columns: repeat(4, 1fr); }
   .pricing-grid { grid-template-columns: repeat(3, 1fr); }
   .pricing-card--featured { transform: scale(1.04); }
   .pricing-card--featured:hover { transform: scale(1.04) translateY(-6px); }
