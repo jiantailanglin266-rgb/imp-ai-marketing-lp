@@ -490,6 +490,11 @@ small { font-size: 0.75em; }
   border: 1px solid var(--border-light);
   background: rgba(255, 255, 255, 0.05); /* 読み込み中のスケルトン */
 }
+/* 縦型バリエーション：画像を縦長（3:4）で見せる。
+   速度・間隔・挙動は横型と共通（--marquee-* を共有） */
+.marquee--portrait { --marquee-height: 320px; }
+.marquee--portrait .marquee__item img { aspect-ratio: 3 / 4; }
+
 /* ホバーで一時停止（2本とも止める） */
 .marquee:hover .marquee__track { animation-play-state: paused; }
 /* トラック1本ぶん＋gap だけ動かすと、複製トラックが元の位置に重なり継ぎ目が消える */
@@ -500,6 +505,7 @@ small { font-size: 0.75em; }
 /* モバイル：小さめ・気持ち速め */
 @media (max-width: 600px) {
   .marquee { --marquee-height: 140px; --marquee-gap: 10px; --marquee-duration: 34s; padding: 20px 0; }
+  .marquee--portrait { --marquee-height: 210px; }
 }
 /* モーション配慮：自動再生を止め、手動の横スクロールで見られるようにする */
 @media (prefers-reduced-motion: reduce) {
