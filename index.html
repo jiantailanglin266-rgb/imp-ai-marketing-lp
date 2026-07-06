@@ -617,6 +617,38 @@
   </div>
 </section>
 
+<!-- ============================================================
+     無限マーキー（2本目：お約束セクションの直下）
+     上部のマーキーと同じ画像・同じ挙動。
+     画像は images/marquee/01.jpg〜08.jpg を共用
+     ============================================================ -->
+<section class="marquee" aria-label="ギャラリー">
+  <div class="marquee__viewport">
+    <!-- 画像セットA -->
+    <ul class="marquee__track">
+      <li class="marquee__item"><img src="images/marquee/01.jpg" width="800" height="450" alt="" loading="lazy" decoding="async"></li>
+      <li class="marquee__item"><img src="images/marquee/02.jpg" width="800" height="450" alt="" loading="lazy" decoding="async"></li>
+      <li class="marquee__item"><img src="images/marquee/03.jpg" width="800" height="450" alt="" loading="lazy" decoding="async"></li>
+      <li class="marquee__item"><img src="images/marquee/04.jpg" width="800" height="450" alt="" loading="lazy" decoding="async"></li>
+      <li class="marquee__item"><img src="images/marquee/05.jpg" width="800" height="450" alt="" loading="lazy" decoding="async"></li>
+      <li class="marquee__item"><img src="images/marquee/06.jpg" width="800" height="450" alt="" loading="lazy" decoding="async"></li>
+      <li class="marquee__item"><img src="images/marquee/07.jpg" width="800" height="450" alt="" loading="lazy" decoding="async"></li>
+      <li class="marquee__item"><img src="images/marquee/08.jpg" width="800" height="450" alt="" loading="lazy" decoding="async"></li>
+    </ul>
+    <!-- 画像セットB（Aの完全複製。ループの継ぎ目を消すためのもの） -->
+    <ul class="marquee__track" aria-hidden="true">
+      <li class="marquee__item"><img src="images/marquee/01.jpg" width="800" height="450" alt="" loading="lazy" decoding="async"></li>
+      <li class="marquee__item"><img src="images/marquee/02.jpg" width="800" height="450" alt="" loading="lazy" decoding="async"></li>
+      <li class="marquee__item"><img src="images/marquee/03.jpg" width="800" height="450" alt="" loading="lazy" decoding="async"></li>
+      <li class="marquee__item"><img src="images/marquee/04.jpg" width="800" height="450" alt="" loading="lazy" decoding="async"></li>
+      <li class="marquee__item"><img src="images/marquee/05.jpg" width="800" height="450" alt="" loading="lazy" decoding="async"></li>
+      <li class="marquee__item"><img src="images/marquee/06.jpg" width="800" height="450" alt="" loading="lazy" decoding="async"></li>
+      <li class="marquee__item"><img src="images/marquee/07.jpg" width="800" height="450" alt="" loading="lazy" decoding="async"></li>
+      <li class="marquee__item"><img src="images/marquee/08.jpg" width="800" height="450" alt="" loading="lazy" decoding="async"></li>
+    </ul>
+  </div>
+</section>
+
 <!-- CTA帯 3 -->
 <section class="cta-band">
   <div class="container cta-band__inner reveal">

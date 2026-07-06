@@ -447,6 +447,7 @@ small { font-size: 0.75em; }
   display: block;
   border-radius: 14px;
   border: 1px solid var(--border-light);
+  background: rgba(255, 255, 255, 0.05); /* 読み込み中のスケルトン */
 }
 /* ホバーで一時停止（2本とも止める） */
 .marquee:hover .marquee__track { animation-play-state: paused; }
