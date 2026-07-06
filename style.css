@@ -37,6 +37,12 @@
   --loop-cycle: 6s;                              /* HOW改善ループの一周時間 */
   --parallax-strength: 14px;                     /* ヒーロー背景の視差の振れ幅 */
   --magnet-range: 8;                             /* CTAマグネットの最大移動px（JSが参照） */
+
+  /* ---- 白背景セクションの粒子柄（濃さ・粒度を数値だけで調整） ---- */
+  --pattern-opacity: 0.35;  /* CSSドット粒子層の濃さ */
+  --pattern-dot-size: 2px;  /* 粒子の大きさ */
+  --pattern-dot-gap: 28px;  /* 粒子の間隔 */
+  --pattern-glow: 0.26;     /* テクスチャ画像（グロー・輝き）の強さ */
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -73,6 +79,60 @@ small { font-size: 0.75em; }
     radial-gradient(700px 400px at 0% 110%, rgba(61, 108, 255, 0.12), transparent 60%),
     var(--navy);
   color: var(--text-light);
+}
+
+/* ============================================================
+   白背景セクションの粒子装飾（AIパーティクル柄）
+   - 対象は .section--light のみ（ダークセクションには敷かない）
+   - 可読性最優先：中央はマスクで抜き、本文(.container)は常に前面
+   - 濃さ・粒度は --pattern-* 変数だけで調整できる
+   ============================================================ */
+.section--light { position: relative; }
+.section--light > .container { position: relative; z-index: 1; }
+
+/* 粒子層：blue/violet/cyan の微細ドットを間隔違いで3グリッド重ねる */
+.section--light::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: var(--pattern-opacity);
+  background-image:
+    radial-gradient(circle, var(--blue) calc(var(--pattern-dot-size) / 2), transparent calc(var(--pattern-dot-size) / 2 + 0.6px)),
+    radial-gradient(circle, var(--violet) calc(var(--pattern-dot-size) / 2), transparent calc(var(--pattern-dot-size) / 2 + 0.6px)),
+    radial-gradient(circle, var(--cyan) calc(var(--pattern-dot-size) / 2), transparent calc(var(--pattern-dot-size) / 2 + 0.6px));
+  background-size:
+    var(--pattern-dot-gap) var(--pattern-dot-gap),
+    calc(var(--pattern-dot-gap) * 1.7) calc(var(--pattern-dot-gap) * 1.7),
+    calc(var(--pattern-dot-gap) * 2.3) calc(var(--pattern-dot-gap) * 2.3);
+  background-position: 0 0, 14px 22px, 7px 9px;
+  /* 中央（本文が乗る帯）は薄く、端に向かって濃く */
+  -webkit-mask-image: radial-gradient(ellipse 72% 62% at 50% 42%, transparent 30%, #000 76%);
+  mask-image: radial-gradient(ellipse 72% 62% at 50% 42%, transparent 30%, #000 76%);
+}
+
+/* グロー＋輝き層：提供テクスチャを multiply で重ね、白地には色の粒だけを乗せる */
+.section--light::after {
+  content: "";
+  position: absolute;
+  inset: -60px 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: var(--pattern-glow);
+  mix-blend-mode: multiply;
+  background:
+    url("images/haikei/bg-glow.jpg") center / 100% 100% no-repeat,
+    url("images/haikei/bg-dots.jpg") 0 0 / 900px auto repeat;
+  /* リング型マスク：本文が乗る中央は抜き、外周（境界付近）もフェードで馴染ませる */
+  -webkit-mask-image: radial-gradient(ellipse 115% 82% at 50% 50%, transparent 30%, #000 58%, #000 78%, transparent 99%);
+  mask-image: radial-gradient(ellipse 115% 82% at 50% 50%, transparent 30%, #000 58%, #000 78%, transparent 99%);
+  /* AIらしい「漂い」：ごくゆっくり上下にドリフト（GPU合成） */
+  animation: patternDrift 50s ease-in-out infinite alternate;
+}
+@keyframes patternDrift {
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(0, 36px, 0); }
 }
 
 .section-head { text-align: center; margin-bottom: 64px; }
@@ -1483,6 +1543,8 @@ small { font-size: 0.75em; }
     --stagger: 45ms;
     --reveal-distance: 20px;
     --parallax-strength: 0px; /* 視差はタッチ端末では無効 */
+    --pattern-dot-gap: 36px;  /* モバイルは粒子を減らして軽く */
+    --pattern-glow: 0.2;
   }
 }
 
@@ -1502,6 +1564,7 @@ small { font-size: 0.75em; }
   .reveal-fv, .hero__seq { animation: none; opacity: 1; transform: none; }
   .how-steps.is-live .how-step { animation: none; }
   .pricing-card--featured { animation: none; }
+  .section--light::after { animation: none; }
 }
 
 /* ============================================================
