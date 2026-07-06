@@ -179,27 +179,21 @@ small { font-size: 0.75em; }
 .header__logo {
   display: flex;
   align-items: center;
-  gap: 10px;
   text-decoration: none;
-  color: #fff;
   margin-right: auto;
 }
-.logo-mark {
-  font-family: var(--font-en);
-  font-weight: 700;
-  font-size: 15px;
-  letter-spacing: 0.06em;
-  color: #fff;
-  background: var(--grad);
-  padding: 6px 10px;
-  border-radius: 8px;
+/* ロゴは濃紺文字のため、白の角丸チップに載せて視認性を確保する */
+.header__logo img {
+  display: block;
+  height: 42px;
+  width: auto;
+  background: #fff;
+  padding: 7px 12px;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.22);
+  transition: height 0.3s ease;
 }
-.logo-text {
-  font-family: var(--font-en);
-  font-weight: 500;
-  font-size: 17px;
-  letter-spacing: 0.04em;
-}
+.header.is-scrolled .header__logo img { height: 36px; }
 
 .gnav { display: none; }
 .gnav__list { display: flex; gap: 30px; }
@@ -1059,13 +1053,13 @@ small { font-size: 0.75em; }
   gap: 40px;
   padding-bottom: 48px;
 }
-.footer__logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-family: var(--font-en);
-  font-size: 18px;
-  font-weight: 500;
+.footer__logo img {
+  display: block;
+  height: 46px;
+  width: auto;
+  background: #fff;
+  padding: 8px 14px;
+  border-radius: 10px;
 }
 .footer__tagline {
   margin-top: 12px;
