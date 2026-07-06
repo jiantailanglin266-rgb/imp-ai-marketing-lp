@@ -13,10 +13,9 @@
   <meta property="og:title" content="IMP AI MARKETING｜AI自動マーケティング フルパッケージ">
   <meta property="og:description" content="HP制作・多言語・AIチャットボット・PR・SEO・LLMO・GA4解析・AI自動改善。売上を上げるWeb施策、ぜんぶ入り。">
   <meta property="og:site_name" content="improvement">
-  <!-- TODO: 要確認（公開URL確定後に差し替え） -->
-  <meta property="og:url" content="https://example.com/">
-  <!-- TODO: 要確認（OGP画像作成後に差し替え） -->
-  <meta property="og:image" content="https://example.com/ogp.png">
+  <!-- TODO: 要確認（独自ドメイン確定時に差し替え。現在はGitHub PagesのURL） -->
+  <meta property="og:url" content="https://jiantailanglin266-rgb.github.io/imp-ai-marketing-lp/">
+  <meta property="og:image" content="https://jiantailanglin266-rgb.github.io/imp-ai-marketing-lp/images/fv.jpg">
   <meta name="twitter:card" content="summary_large_image">
 
   <!-- フォント：和文 Noto Sans JP / 欧文見出し Space Grotesk -->
@@ -25,6 +24,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
+
+  <!-- FV画像はLCP要素のため最優先で読み込む -->
+  <link rel="preload" as="image" href="images/fv.jpg" fetchpriority="high">
 
   <!-- ============================================================
        構造化データ（JSON-LD）: Organization + Service
@@ -103,17 +105,15 @@
     <div class="hero__aurora hero__aurora--2"></div>
     <div class="hero__aurora hero__aurora--3"></div>
   </div>
-  <div class="hero__inner">
-    <p class="section-label section-label--hero">IMPROVEMENT</p>
-    <h1 class="hero__title">
-      作って終わり、<br class="sp-only">をやめる<span class="hero__dot">。</span>
-    </h1>
-    <p class="hero__sub">
-      AIが毎月、売上の伸びしろを見つけて改善し続ける。<br>
-      HP・LP制作から多言語・SEO・LLMOまで、成果につながる“全部”を一社で。
-    </p>
+  <div class="hero__inner hero__inner--fv">
+    <h1 class="sr-only">最新のAIを活用し、成果を最大化する ウェブトータルマーケティングコース｜IMP AI MARKETING</h1>
+    <!-- FVキービジュアル：画像内に特典カードがあるため全体を相談フォームへのリンクにする -->
+    <a href="#contact" class="hero__fv reveal-fv" aria-label="今だけ特典：無料でプロのHP案を作成。無料相談フォームへ">
+      <img src="images/fv.jpg" width="1688" height="932" fetchpriority="high"
+           alt="最新のAIを活用し、成果を最大化する ウェブトータルマーケティングコース。戦略設計から集客・改善まで、AIが導く新しいマーケティングのカタチ。今だけ特典：無料でプロのHP案を作成">
+    </a>
     <div class="hero__cta">
-      <a href="#contact" class="btn btn--primary btn--lg">無料相談する<span class="btn__arrow" aria-hidden="true">→</span></a>
+      <a href="#contact" class="btn btn--primary btn--lg">無料でホームページ案を受け取る<span class="btn__arrow" aria-hidden="true">→</span></a>
       <a href="#contact" class="btn btn--ghost btn--lg">資料ダウンロード</a>
     </div>
     <!-- 信頼バッジ（事実ベースのみ） -->

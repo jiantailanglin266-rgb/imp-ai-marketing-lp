@@ -307,33 +307,51 @@ small { font-size: 0.75em; }
 }
 
 .hero__inner { position: relative; z-index: 1; width: min(100% - 40px, 920px); }
+.hero__inner--fv { width: min(100% - 28px, 1200px); }
 
-.section-label--hero { font-size: 14px; }
-
-.hero__title {
-  font-size: clamp(38px, 9vw, 76px);
-  font-weight: 900;
-  line-height: 1.28;
-  letter-spacing: 0.03em;
-  margin-top: 8px;
-  color: #fff;
-}
-.hero__dot {
-  background: var(--grad-rise);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+/* スクリーンリーダー専用テキスト（見出しは画像内にあるため） */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-.hero__sub {
-  margin-top: 26px;
-  font-size: clamp(14px, 3.8vw, 18px);
-  color: var(--muted-light);
-  font-weight: 500;
+/* FVキービジュアル */
+.hero__fv {
+  display: block;
+  border-radius: clamp(12px, 2vw, 24px);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.5),
+    0 0 60px rgba(61, 108, 255, 0.22),
+    0 0 120px rgba(138, 92, 255, 0.12);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.hero__fv:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 40px 90px rgba(0, 0, 0, 0.55),
+    0 0 70px rgba(61, 108, 255, 0.32),
+    0 0 140px rgba(34, 230, 211, 0.14);
+}
+.hero__fv img { width: 100%; height: auto; display: block; }
+
+/* FVの登場演出（読み込み直後にふわっと出す） */
+.reveal-fv {
+  animation: fvIn 0.9s ease 0.1s both;
+}
+@keyframes fvIn {
+  from { opacity: 0; transform: translateY(24px) scale(0.985); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .hero__cta {
-  margin-top: 40px;
+  margin-top: 34px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1123,6 +1141,8 @@ small { font-size: 0.75em; }
   transform-origin: bottom right;
   animation: chatOpen 0.28s ease;
 }
+/* display:flex が UA の [hidden]{display:none} を上書きしてしまうため明示する */
+.chatbot__panel[hidden] { display: none; }
 @keyframes chatOpen {
   from { opacity: 0; transform: translateY(14px) scale(0.96); }
   to   { opacity: 1; transform: translateY(0) scale(1); }
