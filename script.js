@@ -52,13 +52,14 @@
   var reveals = document.querySelectorAll('.reveal');
 
   if ('IntersectionObserver' in window && !prefersReducedMotion) {
-    // 同じ親を持つ .reveal 同士は少しずつ遅らせて「流れる」出現にする
+    // 同じ親を持つ .reveal 同士は --i（連番）で時間差を付け、順に立ち上げる
+    // 遅延量そのものは CSS変数 --stagger で一元調整できる
     var groups = new Map();
     reveals.forEach(function (el) {
       var parent = el.parentElement;
       if (!groups.has(parent)) groups.set(parent, 0);
       var index = groups.get(parent);
-      el.style.setProperty('--delay', Math.min(index * 0.09, 0.45) + 's');
+      el.style.setProperty('--i', index);
       groups.set(parent, index + 1);
     });
 
@@ -66,10 +67,10 @@
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
-          io.unobserve(entry.target);
+          io.unobserve(entry.target); // 一度出た要素は再度隠さない
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
 
     reveals.forEach(function (el) { io.observe(el); });
   } else {
@@ -157,6 +158,157 @@
   /* コピーライト年の自動更新 */
   var yearEl = document.getElementById('copyYear');
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+  /* ------------------------------------------------------------
+     8. スクロールプログレスバー
+        ページ読了率を最上部の極細グラデバーで表示（rAFで間引き）
+     ------------------------------------------------------------ */
+  var progressBar = document.getElementById('scrollProgress');
+  var progressTicking = false;
+  var updateProgress = function () {
+    var max = document.documentElement.scrollHeight - window.innerHeight;
+    var p = max > 0 ? Math.min(window.scrollY / max, 1) : 0;
+    progressBar.style.transform = 'scaleX(' + p + ')';
+    progressTicking = false;
+  };
+  window.addEventListener('scroll', function () {
+    if (!progressTicking) {
+      progressTicking = true;
+      requestAnimationFrame(updateProgress);
+    }
+  }, { passive: true });
+  updateProgress();
+
+  /* ------------------------------------------------------------
+     9. グローバルナビの現在地ハイライト
+        表示中のセクションに対応するリンクへ .is-active を付与
+     ------------------------------------------------------------ */
+  var navLinks = document.querySelectorAll('.gnav__list a[href^="#"]');
+  if ('IntersectionObserver' in window && navLinks.length) {
+    var linkById = {};
+    navLinks.forEach(function (a) { linkById[a.getAttribute('href').slice(1)] = a; });
+    var navIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          navLinks.forEach(function (a) { a.classList.remove('is-active'); });
+          var link = linkById[entry.target.id];
+          if (link) link.classList.add('is-active');
+        }
+      });
+    }, { rootMargin: '-35% 0px -55% 0px' }); // 画面中央帯に入ったセクションを現在地とみなす
+    Object.keys(linkById).forEach(function (id) {
+      var section = document.getElementById(id);
+      if (section) navIo.observe(section);
+    });
+  }
+
+  /* ------------------------------------------------------------
+     10. CTAボタンのマグネティック効果
+         カーソルに応じてわずかに引き寄せられる（PC・ファインポインタのみ）
+         最大移動量は CSS変数 --magnet-range で調整
+     ------------------------------------------------------------ */
+  var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (canHover && !prefersReducedMotion) {
+    var magnetRange = parseFloat(
+      getComputedStyle(document.documentElement).getPropertyValue('--magnet-range')
+    ) || 8;
+    document.querySelectorAll('[data-magnetic]').forEach(function (btn) {
+      var rafId = null;
+      btn.addEventListener('mousemove', function (e) {
+        if (rafId) return;
+        rafId = requestAnimationFrame(function () {
+          var r = btn.getBoundingClientRect();
+          var dx = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
+          var dy = (e.clientY - (r.top + r.height / 2)) / (r.height / 2);
+          btn.classList.add('is-magnet');
+          btn.style.transform =
+            'translate(' + (dx * magnetRange).toFixed(1) + 'px,' + (dy * magnetRange).toFixed(1) + 'px)';
+          rafId = null;
+        });
+      });
+      btn.addEventListener('mouseleave', function () {
+        btn.style.transform = '';
+        btn.classList.remove('is-magnet');
+      });
+    });
+  }
+
+  /* ------------------------------------------------------------
+     11. ヒーロー背景オーロラの視差
+         マウス位置を -0.5〜0.5 に正規化して --mx/--my へ（強度はCSS側）
+     ------------------------------------------------------------ */
+  var heroBg = document.querySelector('.hero__bg');
+  if (heroBg && canHover && !prefersReducedMotion) {
+    var heroEl = document.getElementById('hero');
+    var parallaxRaf = null;
+    heroEl.addEventListener('mousemove', function (e) {
+      if (parallaxRaf) return;
+      parallaxRaf = requestAnimationFrame(function () {
+        heroBg.style.setProperty('--mx', (e.clientX / window.innerWidth - 0.5).toFixed(3));
+        heroBg.style.setProperty('--my', (e.clientY / window.innerHeight - 0.5).toFixed(3));
+        parallaxRaf = null;
+      });
+    });
+    heroEl.addEventListener('mouseleave', function () {
+      heroBg.style.setProperty('--mx', 0);
+      heroBg.style.setProperty('--my', 0);
+    });
+  }
+
+  /* ------------------------------------------------------------
+     12. 数値のカウントアップ（汎用）
+         <span data-countup="8">8</span> のように使う。
+         接頭・接尾の文字はHTML側に置き、数値だけを属性に入れる。
+         実績数字が確定したら data-countup を振るだけで有効になる
+     ------------------------------------------------------------ */
+  var counters = document.querySelectorAll('[data-countup]');
+  if (counters.length) {
+    var runCount = function (el) {
+      var target = parseFloat(el.getAttribute('data-countup'));
+      if (isNaN(target)) return;
+      if (prefersReducedMotion) { el.textContent = String(target); return; }
+      var start = null;
+      var dur = 900;
+      var step = function (ts) {
+        if (!start) start = ts;
+        var t = Math.min((ts - start) / dur, 1);
+        var eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+        el.textContent = String(Math.round(target * eased));
+        if (t < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    if ('IntersectionObserver' in window && !prefersReducedMotion) {
+      var countIo = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            runCount(entry.target);
+            countIo.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      counters.forEach(function (el) { countIo.observe(el); });
+    } else {
+      counters.forEach(function (el) { runCount(el); });
+    }
+  }
+
+  /* ------------------------------------------------------------
+     13. HOW改善ループの循環演出の起動
+         セクション進入で .is-live を付与 → 発光がSTEP1→2→3と巡回
+     ------------------------------------------------------------ */
+  var howSteps = document.querySelector('#how .how-steps');
+  if (howSteps && 'IntersectionObserver' in window && !prefersReducedMotion) {
+    var howIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          howSteps.classList.add('is-live');
+          howIo.unobserve(howSteps);
+        }
+      });
+    }, { threshold: 0.3 });
+    howIo.observe(howSteps);
+  }
 
   /* ------------------------------------------------------------
      7. チャットボット（ルールベースの自動応答デモ）

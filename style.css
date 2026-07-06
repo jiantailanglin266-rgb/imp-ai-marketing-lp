@@ -27,6 +27,16 @@
   --font-en: "Space Grotesk", "Noto Sans JP", sans-serif;
   --header-h: 76px;
   --header-h-min: 60px;
+
+  /* ---- モーション調整用トークン（数値だけで強度を変えられる） ---- */
+  --reveal-duration: 0.85s;                      /* リビールの所要時間 */
+  --reveal-distance: 28px;                       /* リビールの立ち上がり距離 */
+  --reveal-ease: cubic-bezier(0.22, 1, 0.36, 1); /* リビールのイージング */
+  --stagger: 70ms;                               /* カード群の時間差 */
+  --progress-height: 3px;                        /* スクロールプログレスバーの太さ */
+  --loop-cycle: 6s;                              /* HOW改善ループの一周時間 */
+  --parallax-strength: 14px;                     /* ヒーロー背景の視差の振れ幅 */
+  --magnet-range: 8;                             /* CTAマグネットの最大移動px（JSが参照） */
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -65,7 +75,7 @@ small { font-size: 0.75em; }
   color: var(--text-light);
 }
 
-.section-head { text-align: center; margin-bottom: 56px; }
+.section-head { text-align: center; margin-bottom: 64px; }
 
 /* 英語セクションラベル */
 .section-label {
@@ -92,10 +102,10 @@ small { font-size: 0.75em; }
 }
 
 .section-title {
-  font-size: clamp(26px, 5.4vw, 42px);
+  font-size: clamp(26px, 5.6vw, 46px);
   font-weight: 900;
-  line-height: 1.4;
-  letter-spacing: 0.02em;
+  line-height: 1.35;
+  letter-spacing: 0.035em;
 }
 .section-lead {
   margin-top: 20px;
@@ -133,12 +143,19 @@ small { font-size: 0.75em; }
 .btn--primary {
   color: #fff;
   background: var(--grad);
+  /* ホバーでグラデ位置がシフトする「生きた質感」 */
+  background-size: 180% 100%;
+  background-position: 0% 50%;
   box-shadow: 0 8px 24px rgba(61, 108, 255, 0.35), 0 2px 8px rgba(138, 92, 255, 0.3);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-position 0.5s ease;
 }
 .btn--primary:hover {
   transform: translateY(-2px);
+  background-position: 100% 50%;
   box-shadow: 0 12px 32px rgba(61, 108, 255, 0.45), 0 0 24px rgba(34, 230, 211, 0.25);
 }
+/* マグネティック追従中は transform をJSが制御するため transition を短く */
+.btn.is-magnet { transition: transform 0.15s ease-out, box-shadow 0.25s ease, background-position 0.5s ease; }
 .btn--ghost {
   color: inherit;
   background: transparent;
@@ -156,7 +173,10 @@ small { font-size: 0.75em; }
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 100;
-  transition: background 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+  transition:
+    background 0.5s var(--reveal-ease),
+    box-shadow 0.5s var(--reveal-ease),
+    backdrop-filter 0.5s var(--reveal-ease);
 }
 .header__inner {
   width: min(100% - 32px, 1200px);
@@ -198,6 +218,7 @@ small { font-size: 0.75em; }
 .gnav { display: none; }
 .gnav__list { display: flex; gap: 30px; }
 .gnav__list a {
+  position: relative;
   color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
   font-size: 14px;
@@ -205,6 +226,20 @@ small { font-size: 0.75em; }
   transition: color 0.2s ease;
 }
 .gnav__list a:hover { color: var(--cyan); }
+/* 現在地ハイライト（IntersectionObserverが .is-active を付与） */
+.gnav__list a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -8px;
+  width: 100%; height: 2px;
+  border-radius: 2px;
+  background: var(--grad-rise);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s var(--reveal-ease);
+}
+.gnav__list a.is-active { color: #fff; }
+.gnav__list a.is-active::after { transform: scaleX(1); }
 
 .header__cta { display: none; padding: 12px 24px; font-size: 14px; }
 
@@ -269,8 +304,17 @@ small { font-size: 0.75em; }
   padding: calc(var(--header-h) + 48px) 0 96px;
 }
 
-/* 背景：極細グリッド＋オーロラ */
-.hero__bg { position: absolute; inset: 0; pointer-events: none; }
+/* 背景：極細グリッド＋オーロラ
+   （JSがマウス位置から --mx/--my を更新し、ごく僅かに視差で応答する） */
+.hero__bg {
+  position: absolute;
+  inset: -20px; /* 視差で動いても縁が見えないよう少し拡張 */
+  pointer-events: none;
+  transform: translate(
+    calc(var(--mx, 0) * var(--parallax-strength)),
+    calc(var(--my, 0) * var(--parallax-strength)));
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
 .hero__grid {
   position: absolute; inset: 0;
   background-image:
@@ -335,10 +379,13 @@ small { font-size: 0.75em; }
 }
 .hero__fv img { width: 100%; height: auto; display: block; }
 
-/* FVの登場演出（読み込み直後にふわっと出す） */
+/* FVの登場演出：画像 → CTA → バッジ の順に立ち上げ、最初の3秒を作る */
 .reveal-fv {
-  animation: fvIn 0.9s ease 0.1s both;
+  animation: fvIn 0.9s var(--reveal-ease) 0.1s both;
 }
+.hero__seq { animation: fvIn 0.8s var(--reveal-ease) both; }
+.hero__seq--1 { animation-delay: 0.45s; }
+.hero__seq--2 { animation-delay: 0.65s; }
 @keyframes fvIn {
   from { opacity: 0; transform: translateY(24px) scale(0.985); }
   to   { opacity: 1; transform: translateY(0) scale(1); }
@@ -545,7 +592,19 @@ small { font-size: 0.75em; }
   box-shadow: 0 2px 10px rgba(11, 16, 32, 0.04);
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
-/* ホバーで浮上＋発光 */
+/* ホバーで浮上＋上辺にグラデの光が走る＋アイコンが点灯する */
+.value-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 2px;
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: var(--grad-rise);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s var(--reveal-ease);
+}
+.value-card:hover::before { transform: scaleX(1); }
 .value-card:hover {
   transform: translateY(-6px);
   border-color: rgba(61, 108, 255, 0.4);
@@ -558,6 +617,12 @@ small { font-size: 0.75em; }
   background: linear-gradient(135deg, rgba(61, 108, 255, 0.12), rgba(138, 92, 255, 0.12));
   color: var(--blue);
   margin-bottom: 18px;
+  transition: background 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+}
+.value-card:hover .value-card__icon {
+  background: var(--grad);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(61, 108, 255, 0.35);
 }
 .value-card__icon svg { width: 26px; height: 26px; }
 .value-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
@@ -599,6 +664,44 @@ small { font-size: 0.75em; }
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .how-step:hover { transform: translateY(-4px); box-shadow: 0 14px 34px rgba(11, 16, 32, 0.1); }
+
+/* 「計測→提案→実装」が回り続ける演出：
+   セクション進入後（.is-live付与後）、発光がSTEP1→2→3の順に巡回する */
+.how-steps.is-live .how-step {
+  animation: stepPulse var(--loop-cycle) ease-in-out infinite;
+}
+.how-steps.is-live .how-step:nth-child(2) { animation-delay: calc(var(--loop-cycle) / 3); }
+.how-steps.is-live .how-step:nth-child(3) { animation-delay: calc(var(--loop-cycle) / 3 * 2); }
+@keyframes stepPulse {
+  0%, 30%, 100% {
+    border-color: var(--border-dark);
+    box-shadow: 0 2px 10px rgba(11, 16, 32, 0.04);
+  }
+  10% {
+    border-color: rgba(34, 230, 211, 0.55);
+    box-shadow: 0 12px 34px rgba(61, 108, 255, 0.2), 0 0 0 2px rgba(34, 230, 211, 0.25);
+  }
+}
+/* ステップ間を流れる矢印（PC/タブレットの横並び時のみ） */
+@media (min-width: 601px) {
+  .how-step:not(:last-child)::after {
+    content: "→";
+    position: absolute;
+    right: -22px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    font-family: var(--font-en);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--cyan);
+    animation: flowArrow 1.6s ease-in-out infinite;
+  }
+}
+@keyframes flowArrow {
+  0%, 100% { opacity: 0.35; transform: translateY(-50%) translateX(-3px); }
+  50% { opacity: 1; transform: translateY(-50%) translateX(3px); }
+}
 .how-step__num {
   font-family: var(--font-en);
   font-size: 12px;
@@ -857,13 +960,19 @@ small { font-size: 0.75em; }
 .pricing-card__list .is-off::before { content: "—"; color: rgba(255, 255, 255, 0.25); }
 .pricing-card__btn { width: 100%; }
 
-/* 中央（GROWTH）の強調 */
+/* 中央（GROWTH）の強調：縁をグラデの光がゆっくり流れ続ける */
 .pricing-card--featured {
   border: 1.5px solid transparent;
   background:
     linear-gradient(rgba(20, 26, 54, 0.95), rgba(20, 26, 54, 0.95)) padding-box,
-    var(--grad-rise) border-box;
+    linear-gradient(110deg, var(--blue), var(--violet), var(--cyan), var(--violet), var(--blue)) border-box;
+  background-size: auto, 320% 100%;
+  background-position: 0 0, 0% 50%;
   box-shadow: 0 20px 50px rgba(61, 108, 255, 0.25), 0 0 40px rgba(138, 92, 255, 0.15);
+  animation: borderRun 7s linear infinite;
+}
+@keyframes borderRun {
+  to { background-position: 0 0, 320% 50%; }
 }
 .pricing-card__badge {
   position: absolute;
@@ -1322,12 +1431,53 @@ small { font-size: 0.75em; }
    ============================================================ */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: translateY(var(--reveal-distance));
+  transition:
+    opacity var(--reveal-duration) var(--reveal-ease),
+    transform var(--reveal-duration) var(--reveal-ease);
+  /* カードが並ぶグリッドは少しずつ遅らせる（JSで --i を付与） */
+  transition-delay: min(calc(var(--i, 0) * var(--stagger)), 560ms);
 }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
-/* カードが並ぶグリッドは少しずつ遅らせる（JSで --delay を付与） */
-.reveal { transition-delay: var(--delay, 0s); }
+
+/* 大判画像のマスク展開（why / llmo）：下から開く */
+.img-mask {
+  clip-path: inset(12% 5% 12% 5%);
+  transition:
+    opacity var(--reveal-duration) var(--reveal-ease),
+    transform var(--reveal-duration) var(--reveal-ease),
+    clip-path 1.2s var(--reveal-ease);
+}
+.img-mask.is-visible { clip-path: inset(0 0 0 0); }
+
+/* ============================================================
+   スクロールプログレスバー（最上部の極細グラデ）
+   ============================================================ */
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: var(--progress-height);
+  z-index: 130;
+  pointer-events: none;
+}
+.scroll-progress span {
+  display: block;
+  height: 100%;
+  background: var(--grad-rise);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+/* ============================================================
+   モバイルでは演出を軽く（時間差短縮・距離減）
+   ============================================================ */
+@media (max-width: 600px) {
+  :root {
+    --stagger: 45ms;
+    --reveal-distance: 20px;
+    --parallax-strength: 0px; /* 視差はタッチ端末では無効 */
+  }
+}
 
 /* ============================================================
    モーション配慮
@@ -1340,6 +1490,11 @@ small { font-size: 0.75em; }
     transition-duration: 0.01ms !important;
   }
   .reveal { opacity: 1; transform: none; }
+  .img-mask { clip-path: none !important; }
+  .hero__bg { transform: none !important; }
+  .reveal-fv, .hero__seq { animation: none; opacity: 1; transform: none; }
+  .how-steps.is-live .how-step { animation: none; }
+  .pricing-card--featured { animation: none; }
 }
 
 /* ============================================================
