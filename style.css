@@ -588,7 +588,8 @@ small { font-size: 0.75em; }
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border-light);
   border-radius: var(--radius);
-  overflow: hidden;
+  /* 注意: ここに overflow:hidden を入れると行見出しの sticky が効かなくなる。
+     角丸のクリップは親 .table-wrap が担う */
 }
 .compare-table th, .compare-table td {
   padding: 16px 14px;
@@ -629,6 +630,38 @@ small { font-size: 0.75em; }
 .mark--ok { color: rgba(255, 255, 255, 0.85); }
 .mark--tri { color: rgba(255, 255, 255, 0.5); }
 .mark--ng { color: rgba(255, 255, 255, 0.3); }
+
+/* スワイプ誘導（表が画面に収まらない幅でのみ表示） */
+.table-hint {
+  display: none;
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted-light);
+  margin: -28px 0 16px;
+}
+
+/* モバイル・タブレット：行見出しを固定し、スワイプしても項目名が見えるようにする */
+@media (max-width: 1024px) {
+  .table-hint { display: block; }
+  .compare-table { min-width: 560px; }
+  .compare-table th, .compare-table td { padding: 12px 10px; }
+  .compare-table thead th { font-size: 11.5px; }
+  .compare-table small { font-size: 10px; }
+  /* 行見出し（1列目）を左に固定。下が透けないよう不透明ネイビーを敷く */
+  .compare-table tbody th,
+  .compare-table thead th:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    background: #141931; /* セクション背景＋表の半透明白を合成した近似色 */
+    white-space: normal;
+    min-width: 100px;
+    max-width: 128px;
+    font-size: 12px;
+    line-height: 1.5;
+    box-shadow: 1px 0 0 var(--border-light);
+  }
+}
 
 /* ============================================================
    CTA帯（反復ブロック）
