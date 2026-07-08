@@ -206,6 +206,32 @@
 </section>
 
 <!-- ============================================================
+     ブランドムービー（ヒーロー直下）
+     ミュート自動再生＋ループ。画面外では自動停止して負荷を抑える。
+     音声は右下のボタンでON/OFF（reduced-motion時は自動再生せず
+     ネイティブコントロールを表示）
+     ============================================================ -->
+<section class="movie" aria-label="サービス紹介ムービー">
+  <div class="container movie__inner">
+    <p class="section-label reveal">BRAND MOVIE</p>
+    <div class="movie__frame reveal">
+      <video id="brandMovie"
+             src="videos/imp-movie.mp4"
+             poster="videos/imp-movie-poster.jpg"
+             width="1280" height="736"
+             autoplay muted loop playsinline preload="metadata"
+             aria-label="IMP AI MARKETING サービス紹介ムービー（テロップ付き）"></video>
+      <button type="button" class="movie__sound" id="movieSound" aria-label="音声をオンにする" aria-pressed="false">
+        <!-- 音声OFF時のアイコン -->
+        <svg class="movie__icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6.5 9H3v6h3.5L11 19V5z"/><path d="M16 9.5l5 5M21 9.5l-5 5"/></svg>
+        <!-- 音声ON時のアイコン -->
+        <svg class="movie__icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6.5 9H3v6h3.5L11 19V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 6a9 9 0 0 1 0 12"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
      2. 課題提起（WHY）※デザイン画像で丸ごと表示
      ============================================================ -->
 <section class="section-visual" id="why">

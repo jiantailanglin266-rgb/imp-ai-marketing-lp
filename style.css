@@ -504,6 +504,67 @@ small { font-size: 0.75em; }
 }
 
 /* ============================================================
+   ブランドムービー（ヒーロー直下）
+   ============================================================ */
+.movie {
+  background: var(--navy);
+  padding: 8px 0 84px;
+}
+.movie__inner { text-align: center; }
+.movie__frame {
+  position: relative;
+  margin-top: 8px;
+  border-radius: clamp(12px, 2vw, 24px);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.5),
+    0 0 60px rgba(61, 108, 255, 0.22),
+    0 0 120px rgba(138, 92, 255, 0.12);
+}
+.movie__frame video { width: 100%; height: auto; display: block; }
+
+/* 音声ON/OFFボタン（動画右下のオーバーレイ） */
+.movie__sound {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  z-index: 2;
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  background: rgba(11, 16, 32, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+.movie__sound:hover {
+  background: rgba(61, 108, 255, 0.55);
+  transform: scale(1.08);
+  box-shadow: 0 0 18px rgba(34, 230, 211, 0.3);
+}
+.movie__sound svg { width: 22px; height: 22px; }
+/* aria-pressed でアイコンを切り替え */
+.movie__sound .movie__icon-on { display: none; }
+.movie__sound[aria-pressed="true"] .movie__icon-on { display: block; }
+.movie__sound[aria-pressed="true"] .movie__icon-off { display: none; }
+/* 音声ON中はシアンの輪で状態を明示 */
+.movie__sound[aria-pressed="true"] {
+  border-color: rgba(34, 230, 211, 0.7);
+  box-shadow: 0 0 16px rgba(34, 230, 211, 0.35);
+}
+
+@media (max-width: 600px) {
+  .movie { padding: 0 0 60px; }
+  .movie__sound { right: 10px; bottom: 10px; width: 42px; height: 42px; }
+}
+
+/* ============================================================
    WHY（課題提起）── デザイン画像を丸ごと表示するセクション
    ============================================================ */
 .section-visual {

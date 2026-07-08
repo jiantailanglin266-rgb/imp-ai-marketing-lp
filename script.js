@@ -296,7 +296,46 @@
   }
 
   /* ------------------------------------------------------------
-     13. HOW改善ループの循環演出の起動
+     13. ブランドムービー制御
+         - 画面外では自動停止（省電力・パフォーマンス）
+         - 右下ボタンで音声ON/OFF
+         - reduced-motion 時は自動再生せずネイティブコントロールを表示
+     ------------------------------------------------------------ */
+  var brandMovie = document.getElementById('brandMovie');
+  if (brandMovie) {
+    var movieSound = document.getElementById('movieSound');
+
+    if (prefersReducedMotion) {
+      brandMovie.removeAttribute('autoplay');
+      brandMovie.pause();
+      brandMovie.controls = true;
+      if (movieSound) movieSound.hidden = true;
+    } else {
+      // 画面内に入ったら再生、外れたら停止
+      if ('IntersectionObserver' in window) {
+        var movieIo = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              brandMovie.play().catch(function () { /* 自動再生がブロックされても静かに続行 */ });
+            } else {
+              brandMovie.pause();
+            }
+          });
+        }, { threshold: 0.25 });
+        movieIo.observe(brandMovie);
+      }
+      // 音声トグル
+      movieSound.addEventListener('click', function () {
+        brandMovie.muted = !brandMovie.muted;
+        var on = !brandMovie.muted;
+        movieSound.setAttribute('aria-pressed', String(on));
+        movieSound.setAttribute('aria-label', on ? '音声をオフにする' : '音声をオンにする');
+      });
+    }
+  }
+
+  /* ------------------------------------------------------------
+     14. HOW改善ループの循環演出の起動
          セクション進入で .is-live を付与 → 発光がSTEP1→2→3と巡回
      ------------------------------------------------------------ */
   var howSteps = document.querySelector('#how .how-steps');
