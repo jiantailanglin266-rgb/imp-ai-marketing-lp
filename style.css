@@ -1368,6 +1368,7 @@ small { font-size: 0.75em; }
   color: var(--muted-light);
 }
 .footer__bottom a { color: var(--muted-light); }
+.footer__legal { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 20px; }
 
 /* ============================================================
    スマホ固定CTAバー
