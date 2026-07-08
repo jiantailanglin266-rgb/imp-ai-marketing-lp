@@ -1040,7 +1040,13 @@ small { font-size: 0.75em; }
 }
 .pricing-card__desc { font-size: 13px; color: var(--muted-light); margin-top: 6px; }
 .pricing-card__price { margin: 22px 0; color: #fff; }
-.pricing-card__price .placeholder-num { font-size: 34px; }
+.pricing-card__amount {
+  font-family: var(--font-en);
+  font-weight: 700;
+  font-size: 34px;
+  color: var(--cyan);
+  letter-spacing: 0.01em;
+}
 .pricing-card__price small { color: var(--muted-light); margin-left: 4px; }
 .pricing-card__list { flex: 1; display: grid; gap: 10px; margin-bottom: 28px; }
 .pricing-card__list li {

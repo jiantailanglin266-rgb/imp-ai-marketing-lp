@@ -266,14 +266,16 @@
     var runCount = function (el) {
       var target = parseFloat(el.getAttribute('data-countup'));
       if (isNaN(target)) return;
-      if (prefersReducedMotion) { el.textContent = String(target); return; }
+      // 桁区切り（9,800 のようなカンマ）を保って表示する
+      var fmt = function (n) { return Math.round(n).toLocaleString('ja-JP'); };
+      if (prefersReducedMotion) { el.textContent = fmt(target); return; }
       var start = null;
       var dur = 900;
       var step = function (ts) {
         if (!start) start = ts;
         var t = Math.min((ts - start) / dur, 1);
         var eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
-        el.textContent = String(Math.round(target * eased));
+        el.textContent = fmt(target * eased);
         if (t < 1) requestAnimationFrame(step);
       };
       requestAnimationFrame(step);
