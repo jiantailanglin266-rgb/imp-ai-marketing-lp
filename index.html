@@ -8,15 +8,29 @@
        SEO / OGP
        ============================================================ -->
   <title>IMP AI MARKETING｜AI自動マーケティング フルパッケージ - improvement</title>
-  <meta name="description" content="作って終わり、をやめる。HP・LP制作から多言語対応・AIチャットボット・PR・SEO・LLMO・GA4解析まで、売上を伸ばすためのWeb施策を一社でまるごと。AIが改善案を提案し、承認したものだけ実装する“改善し続ける”ホームページを。">
+  <meta name="description" content="AIマーケティングで“作って終わり”をやめる。ホームページ制作（HP・LP）から多言語対応・AIチャットボット・PR・SEO・LLMO・GA4解析まで一社でまるごと。AIが改善案を提案し、承認したものだけ実装する、改善し続けるWebマーケティングを。">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://imp-aicreat.com/">
+
+  <!-- OGP（本番ドメイン基準） -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="IMP AI MARKETING｜AI自動マーケティング フルパッケージ">
   <meta property="og:description" content="HP制作・多言語・AIチャットボット・PR・SEO・LLMO・GA4解析・AI自動改善。売上を上げるWeb施策、ぜんぶ入り。">
   <meta property="og:site_name" content="improvement">
-  <!-- TODO: 要確認（独自ドメイン確定時に差し替え。現在はGitHub PagesのURL） -->
-  <meta property="og:url" content="https://jiantailanglin266-rgb.github.io/imp-ai-marketing-lp/">
-  <meta property="og:image" content="https://jiantailanglin266-rgb.github.io/imp-ai-marketing-lp/images/fv.jpg">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:url" content="https://imp-aicreat.com/">
+  <meta property="og:image" content="https://imp-aicreat.com/images/fv.jpg">
+
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="IMP AI MARKETING｜AI自動マーケティング フルパッケージ">
+  <meta name="twitter:description" content="HP制作・多言語・AIチャットボット・PR・SEO・LLMO・GA4解析・AI自動改善。売上を上げるWeb施策、ぜんぶ入り。">
+  <meta name="twitter:image" content="https://imp-aicreat.com/images/fv.jpg">
+
+  <!-- アイコン・テーマカラー -->
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <meta name="theme-color" content="#0B1020">
 
   <!-- フォント：和文 Noto Sans JP / 欧文見出し Space Grotesk -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,7 +43,11 @@
   <link rel="preload" as="image" href="images/fv.jpg" fetchpriority="high">
 
   <!-- ============================================================
-       構造化データ（JSON-LD）: Organization + Service
+       構造化データ（JSON-LD）
+       Organization + WebSite + Service（料金Offer付き）+ BreadcrumbList
+       ※お客様の声の数値はReview/AggregateRatingとして構造化しない（景表法配慮）
+       TODO-TEL: 電話番号が確定したら contactPoint に "telephone" を追加
+       TODO: 公式SNS開設後、Organization に "sameAs": [URL...] を追加
        ============================================================ -->
   <script type="application/ld+json">
   {
@@ -37,19 +55,77 @@
     "@graph": [
       {
         "@type": "Organization",
+        "@id": "https://imp-aicreat.com/#organization",
         "name": "improvement",
         "alternateName": "IMP",
-        "url": "https://example.com/",
-        "logo": "https://jiantailanglin266-rgb.github.io/imp-ai-marketing-lp/images/logo.png",
-        "email": "support@imp-aicreat.com",
-        "description": "AI自動マーケティング フルパッケージ「IMP AI MARKETING」を提供。運営：IMPメディア事業部"
+        "url": "https://imp-aicreat.com/",
+        "logo": "https://imp-aicreat.com/images/logo.png",
+        "description": "AIの力で挑戦する企業の価値を最大化する、AI自動マーケティングのフルパッケージサービス。",
+        "slogan": "Keep improving. ― 改善に、終わりはない。",
+        "department": { "@type": "Organization", "name": "IMPメディア事業部" },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "sales",
+          "email": "support@imp-aicreat.com",
+          "availableLanguage": ["ja", "en", "zh"]
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://imp-aicreat.com/#website",
+        "name": "IMP AI MARKETING",
+        "url": "https://imp-aicreat.com/",
+        "inLanguage": "ja",
+        "publisher": { "@id": "https://imp-aicreat.com/#organization" }
       },
       {
         "@type": "Service",
-        "name": "IMP AI MARKETING（AI自動マーケティング フルパッケージ）",
-        "provider": { "@type": "Organization", "name": "improvement" },
-        "serviceType": "Webマーケティング支援",
-        "description": "HP/LP制作、多言語対応、AIチャットボット、プレスリリース配信、SEO、LLMO（AI検索最適化）、GA4解析、Microsoft Clarity×AIによる自動改善提案までを一括提供するフルパッケージ。"
+        "name": "IMP AI MARKETING",
+        "serviceType": "AI自動マーケティング／ホームページ制作・運用",
+        "provider": { "@id": "https://imp-aicreat.com/#organization" },
+        "areaServed": { "@type": "Country", "name": "日本" },
+        "description": "HP/LP制作・多言語対応・AIチャットボット・PR配信・SEO・LLMO・GA4解析・AI自動改善を一気通貫で提供するフルパッケージ。",
+        "offers": {
+          "@type": "OfferCatalog",
+          "name": "料金プラン",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "name": "STARTER",
+              "price": "9800",
+              "priceCurrency": "JPY",
+              "description": "売れる土台を作りたい方向け。月額（税込）",
+              "url": "https://imp-aicreat.com/#pricing"
+            },
+            {
+              "@type": "Offer",
+              "name": "GROWTH",
+              "price": "19800",
+              "priceCurrency": "JPY",
+              "description": "集客と改善で伸ばしたい方向け。月額（税込）",
+              "url": "https://imp-aicreat.com/#pricing"
+            },
+            {
+              "@type": "Offer",
+              "name": "FULL PACKAGE",
+              "price": "39800",
+              "priceCurrency": "JPY",
+              "description": "8領域すべてを任せたい方向け。月額（税込）",
+              "url": "https://imp-aicreat.com/#pricing"
+            }
+          ]
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "ホーム",
+            "item": "https://imp-aicreat.com/"
+          }
+        ]
       }
     ]
   }
@@ -882,16 +958,21 @@
     </div>
   </div>
 
-  <!-- FAQ 構造化データ -->
+  <!-- FAQ 構造化データ（ページ内FAQ全10問と一字一句同一。LLMOで最も効くQ&A構造） -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      { "@type": "Question", "name": "Webの知識がなくても大丈夫ですか？", "acceptedAnswer": { "@type": "Answer", "text": "はい、ご安心ください。専門用語をできるだけ使わずにご説明し、運用開始後も「AIの提案を確認して承認する」だけで改善が進む仕組みです。" } },
-      { "@type": "Question", "name": "LLMOとは何ですか？SEOと何が違いますか？", "acceptedAnswer": { "@type": "Answer", "text": "LLMOはChatGPTなどの生成AIの回答に自社が引用・推薦されやすくするための最適化です。検索エンジンで上位を目指すSEOと地続きの施策で、当社では両方をまとめて設計します。" } },
-      { "@type": "Question", "name": "AIが勝手にサイトを書き換えることはありませんか？", "acceptedAnswer": { "@type": "Answer", "text": "ありません。AIはあくまで「改善案の提案」までを行い、実際の反映はお客様が承認したものだけです。" } },
+      { "@type": "Question", "name": "Web の知識がなくても大丈夫ですか？", "acceptedAnswer": { "@type": "Answer", "text": "はい、ご安心ください。専門用語をできるだけ使わずにご説明し、運用開始後も「AIの提案を確認して承認する」だけで改善が進む仕組みです。" } },
+      { "@type": "Question", "name": "LLMO とは何ですか？ SEO と何が違いますか？", "acceptedAnswer": { "@type": "Answer", "text": "LLMO は ChatGPT などの生成AIの回答に自社が引用・推薦されやすくするための最適化です。検索エンジンで上位を目指す SEO と地続きの施策で、当社では両方をまとめて設計します。" } },
+      { "@type": "Question", "name": "AI が勝手にサイトを書き換えることはありませんか？", "acceptedAnswer": { "@type": "Answer", "text": "ありません。AI はあくまで「改善案の提案」までを行い、実際の反映はお客様が承認したものだけです。" } },
+      { "@type": "Question", "name": "既存のホームページを活かしたまま依頼できますか？", "acceptedAnswer": { "@type": "Answer", "text": "可能です。既存サイトの解析・改善運用のみのご依頼や、部分的なリニューアルのご相談も承ります。まずは現状を拝見してご提案します。" } },
+      { "@type": "Question", "name": "多言語対応はどの言語に対応していますか？", "acceptedAnswer": { "@type": "Answer", "text": "英語・中国語をはじめ、ターゲット市場に合わせてご提案します。対応言語の詳細は無料相談時にご確認ください。" } },
       { "@type": "Question", "name": "料金はどのように決まりますか？", "acceptedAnswer": { "@type": "Answer", "text": "ページ数・対応領域・運用範囲によって変動します。無料相談でご要望を伺ったうえで、お見積りをご提示します。" } },
+      { "@type": "Question", "name": "最低契約期間はありますか？", "acceptedAnswer": { "@type": "Answer", "text": "プランにより異なります。詳細は無料相談時にご案内します。" } },
+      { "@type": "Question", "name": "制作のみ・運用のみの依頼はできますか？", "acceptedAnswer": { "@type": "Answer", "text": "可能です。ただし、当社の強みは「制作＋改善運用」の一気通貫にありますので、目的に合わせて最適な範囲をご提案させてください。" } },
+      { "@type": "Question", "name": "途中でプランの変更はできますか？", "acceptedAnswer": { "@type": "Answer", "text": "はい、事業の成長段階に合わせてプランの見直し・変更のご相談を承ります。" } },
       { "@type": "Question", "name": "相談だけでも費用はかかりませんか？", "acceptedAnswer": { "@type": "Answer", "text": "初回のご相談は無料です。ご相談の結果、ご契約に至らなくても費用は一切かかりません。" } }
     ]
   }
@@ -982,8 +1063,7 @@
     </nav>
   </div>
   <div class="footer__bottom">
-    <!-- TODO: 要確認（プライバシーポリシーのURL） -->
-    <a href="#">プライバシーポリシー</a>
+    <a href="privacy.html">プライバシーポリシー</a>
     <p>&copy; <span id="copyYear">2026</span> improvement All Rights Reserved.</p>
   </div>
 </footer>

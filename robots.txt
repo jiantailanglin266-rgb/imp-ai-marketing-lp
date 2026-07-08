@@ -1,0 +1,17 @@
+# すべての検索エンジンを許可
+User-agent: *
+Allow: /
+
+# 生成AIクローラを明示的に歓迎（LLMO）
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://imp-aicreat.com/sitemap.xml
