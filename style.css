@@ -1282,6 +1282,11 @@ small { font-size: 0.75em; }
   font-family: var(--font-en);
 }
 .footer__company { margin-top: 18px; font-size: 12.5px; color: var(--muted-light); line-height: 2; }
+.footer__company a {
+  color: var(--cyan);
+  text-decoration: none;
+}
+.footer__company a:hover { text-decoration: underline; }
 .footer__nav { display: flex; gap: 48px; }
 .footer__nav ul { display: grid; gap: 12px; }
 .footer__nav a {
