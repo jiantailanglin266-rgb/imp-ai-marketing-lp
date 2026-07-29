@@ -46,7 +46,6 @@
        構造化データ（JSON-LD）
        Organization + WebSite + Service（料金Offer付き）+ BreadcrumbList
        ※お客様の声の数値はReview/AggregateRatingとして構造化しない（景表法配慮）
-       TODO-TEL: 電話番号が確定したら contactPoint に "telephone" を追加
        TODO: 公式SNS開設後、Organization に "sameAs": [URL...] を追加
        ============================================================ -->
   <script type="application/ld+json">
@@ -66,6 +65,7 @@
         "contactPoint": {
           "@type": "ContactPoint",
           "contactType": "sales",
+          "telephone": "+81-50-5574-3220",
           "email": "support@imp-aicreat.com",
           "availableLanguage": ["ja", "en", "zh"]
         }
@@ -1069,8 +1069,9 @@
     <div class="footer__brand">
       <p class="footer__logo"><img src="images/logo.png" alt="IMP AI MARKETING" width="640" height="118" loading="lazy" decoding="async"></p>
       <p class="footer__tagline">Keep improving. ― 改善に、終わりはない。</p>
-      <!-- TODO: 要確認（TELは確定後に追記。住所も未掲載） -->
+      <!-- TODO: 要確認（住所は未掲載。確定後に追記） -->
       <p class="footer__company">運営会社：IMPメディア事業部<br>
+        TEL：<a href="tel:05055743220">050-5574-3220</a><br>
         Mail：<a href="mailto:support@imp-aicreat.com">support@imp-aicreat.com</a></p>
     </div>
     <nav class="footer__nav" aria-label="フッターナビゲーション">
