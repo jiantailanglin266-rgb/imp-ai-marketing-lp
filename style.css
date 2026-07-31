@@ -43,6 +43,13 @@
   --pattern-dot-size: 2px;  /* 粒子の大きさ */
   --pattern-dot-gap: 28px;  /* 粒子の間隔 */
   --pattern-glow: 0.26;     /* テクスチャ画像（グロー・輝き）の強さ */
+
+  /* ---- ヒーロー背景の斜めワードマーキー（赤） ---- */
+  --wordline-red: #FF2D55;                          /* ラインの赤 */
+  --wordline-opacity: 0.2;                          /* ラインの濃さ */
+  --wordline-size: clamp(38px, 7vw, 84px);          /* 文字サイズ */
+  --wordline-duration: 46s;                         /* 1ループの時間 */
+  --wordline-angle: -10deg;                         /* 傾き */
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -402,6 +409,47 @@ small { font-size: 0.75em; }
 @keyframes aurora {
   0%   { transform: translate(0, 0) scale(1); }
   100% { transform: translate(6%, -8%) scale(1.15); }
+}
+
+/* 斜めワードマーキー（AI系ワードが流れる赤の装飾ライン） */
+.word-marquee {
+  position: absolute;
+  left: -12%;
+  width: 130%;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: var(--wordline-opacity);
+}
+.word-marquee--1 { top: 14%; transform: rotate(var(--wordline-angle)); }
+.word-marquee--2 { bottom: 10%; transform: rotate(var(--wordline-angle)); }
+.word-marquee__inner {
+  display: inline-flex;
+  white-space: nowrap;
+  will-change: transform;
+  animation: wordSlide var(--wordline-duration) linear infinite;
+}
+/* 2本目は逆方向＋少しゆっくりで奥行きを出す */
+.word-marquee--2 .word-marquee__inner {
+  animation-direction: reverse;
+  animation-duration: calc(var(--wordline-duration) * 1.25);
+}
+.word-marquee__text {
+  font-family: var(--font-en);
+  font-weight: 700;
+  font-size: var(--wordline-size);
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--wordline-red);
+}
+/* 2本目は輪郭線のみの抜き文字 */
+.word-marquee--2 .word-marquee__text {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--wordline-red);
+}
+/* セットA/Bが同幅なので -50% 移動でシームレスにループする */
+@keyframes wordSlide {
+  to { transform: translateX(-50%); }
 }
 
 .hero__inner { position: relative; z-index: 1; width: min(100% - 40px, 920px); }
@@ -1650,6 +1698,7 @@ small { font-size: 0.75em; }
     --parallax-strength: 0px; /* 視差はタッチ端末では無効 */
     --pattern-dot-gap: 36px;  /* モバイルは粒子を減らして軽く */
     --pattern-glow: 0.2;
+    --wordline-opacity: 0.15; /* 斜めワードラインはモバイルで控えめに */
   }
 }
 
