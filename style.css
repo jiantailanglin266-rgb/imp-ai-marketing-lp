@@ -434,6 +434,17 @@ small { font-size: 0.75em; }
 }
 
 /* 斜めワードマーキー（AI系ワードが流れる赤の装飾ライン） */
+/* wrapのマスクで、固定ヘッダーの帯（上部約200px）にはラインを描画しない。
+   斜めに回転したラインの端がヘッダーやナビに重ならないようにするための処置 */
+.word-marquee-wrap {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom,
+    transparent 0, transparent 120px, #000 240px, #000 calc(100% - 60px), transparent);
+  mask-image: linear-gradient(to bottom,
+    transparent 0, transparent 120px, #000 240px, #000 calc(100% - 60px), transparent);
+}
 .word-marquee {
   position: absolute;
   left: -12%;
@@ -442,8 +453,8 @@ small { font-size: 0.75em; }
   pointer-events: none;
   opacity: var(--wordline-opacity);
 }
-.word-marquee--1 { top: 14%; transform: rotate(var(--wordline-angle)); }
-.word-marquee--2 { bottom: 10%; transform: rotate(var(--wordline-angle)); }
+.word-marquee--1 { top: 20%; transform: rotate(var(--wordline-angle)); }
+.word-marquee--2 { bottom: 8%; transform: rotate(var(--wordline-angle)); }
 .word-marquee__inner {
   display: inline-flex;
   white-space: nowrap;

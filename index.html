@@ -185,17 +185,20 @@
     <div class="hero__aurora hero__aurora--3"></div>
     <!-- ゴールドのグラデーションレイヤー（screen合成で金の光波を重ねる） -->
     <div class="hero__gold"></div>
-    <!-- 斜めワードマーキー（AI系ワードが流れる赤の装飾ライン。テキストはセットA/Bの複製でシームレスループ） -->
-    <div class="word-marquee word-marquee--1">
-      <div class="word-marquee__inner">
-        <span class="word-marquee__text">AI MARKETING&ensp;✦&ensp;LLMO&ensp;✦&ensp;SEO&ensp;✦&ensp;AI CHATBOT&ensp;✦&ensp;GA4 ANALYTICS&ensp;✦&ensp;KEEP IMPROVING&ensp;✦&ensp;</span>
-        <span class="word-marquee__text">AI MARKETING&ensp;✦&ensp;LLMO&ensp;✦&ensp;SEO&ensp;✦&ensp;AI CHATBOT&ensp;✦&ensp;GA4 ANALYTICS&ensp;✦&ensp;KEEP IMPROVING&ensp;✦&ensp;</span>
+    <!-- 斜めワードマーキー（AI系ワードが流れる赤の装飾ライン。テキストはセットA/Bの複製でシームレスループ）
+         wrap のマスクでヘッダー帯（上部）には描画しない -->
+    <div class="word-marquee-wrap">
+      <div class="word-marquee word-marquee--1">
+        <div class="word-marquee__inner">
+          <span class="word-marquee__text">AI MARKETING&ensp;✦&ensp;LLMO&ensp;✦&ensp;SEO&ensp;✦&ensp;AI CHATBOT&ensp;✦&ensp;GA4 ANALYTICS&ensp;✦&ensp;KEEP IMPROVING&ensp;✦&ensp;</span>
+          <span class="word-marquee__text">AI MARKETING&ensp;✦&ensp;LLMO&ensp;✦&ensp;SEO&ensp;✦&ensp;AI CHATBOT&ensp;✦&ensp;GA4 ANALYTICS&ensp;✦&ensp;KEEP IMPROVING&ensp;✦&ensp;</span>
+        </div>
       </div>
-    </div>
-    <div class="word-marquee word-marquee--2">
-      <div class="word-marquee__inner">
-        <span class="word-marquee__text">WEB TOTAL MARKETING&ensp;✦&ensp;AI AUTOMATION&ensp;✦&ensp;CLARITY&ensp;✦&ensp;MULTILINGUAL&ensp;✦&ensp;IMPROVEMENT&ensp;✦&ensp;</span>
-        <span class="word-marquee__text">WEB TOTAL MARKETING&ensp;✦&ensp;AI AUTOMATION&ensp;✦&ensp;CLARITY&ensp;✦&ensp;MULTILINGUAL&ensp;✦&ensp;IMPROVEMENT&ensp;✦&ensp;</span>
+      <div class="word-marquee word-marquee--2">
+        <div class="word-marquee__inner">
+          <span class="word-marquee__text">WEB TOTAL MARKETING&ensp;✦&ensp;AI AUTOMATION&ensp;✦&ensp;CLARITY&ensp;✦&ensp;MULTILINGUAL&ensp;✦&ensp;IMPROVEMENT&ensp;✦&ensp;</span>
+          <span class="word-marquee__text">WEB TOTAL MARKETING&ensp;✦&ensp;AI AUTOMATION&ensp;✦&ensp;CLARITY&ensp;✦&ensp;MULTILINGUAL&ensp;✦&ensp;IMPROVEMENT&ensp;✦&ensp;</span>
+        </div>
       </div>
     </div>
   </div>
