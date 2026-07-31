@@ -37,7 +37,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
+  <!-- ?v= はキャッシュバスター。CSS/JSを更新したら数字を上げてアップすると確実に反映される -->
+  <link rel="stylesheet" href="style.css?v=20260801a">
 
   <!-- FV画像はLCP要素のため最優先で読み込む -->
   <link rel="preload" as="image" href="images/fv.jpg" fetchpriority="high">
@@ -185,19 +186,27 @@
     <div class="hero__aurora hero__aurora--3"></div>
     <!-- ゴールドのグラデーションレイヤー（screen合成で金の光波を重ねる） -->
     <div class="hero__gold"></div>
-    <!-- 斜めワードマーキー（AI系ワードが流れる赤の装飾ライン。テキストはセットA/Bの複製でシームレスループ）
-         wrap のマスクでヘッダー帯（上部）には描画しない -->
+    <!-- 斜めワードマーキー（REALPORT仕様：塗り/輪郭/小サブラベル混在・右上→左下へ流れる）
+         wrap のマスクでヘッダー帯（上部）には描画しない。セットA/B複製でシームレスループ -->
     <div class="word-marquee-wrap">
       <div class="word-marquee word-marquee--1">
         <div class="word-marquee__inner">
-          <span class="word-marquee__text">AI MARKETING&ensp;✦&ensp;LLMO&ensp;✦&ensp;SEO&ensp;✦&ensp;AI CHATBOT&ensp;✦&ensp;GA4 ANALYTICS&ensp;✦&ensp;KEEP IMPROVING&ensp;✦&ensp;</span>
-          <span class="word-marquee__text">AI MARKETING&ensp;✦&ensp;LLMO&ensp;✦&ensp;SEO&ensp;✦&ensp;AI CHATBOT&ensp;✦&ensp;GA4 ANALYTICS&ensp;✦&ensp;KEEP IMPROVING&ensp;✦&ensp;</span>
+          <span class="wm-set">
+            <span class="wm-f">AI MARKETING</span><span>LLMO</span><span class="wm-s">GENERATIVE AI OPTIMIZATION</span><span class="wm-f">SEO</span><span>AI CHATBOT</span><span class="wm-s">DATA DRIVEN</span><span class="wm-f">GA4 ANALYTICS</span><span>KEEP IMPROVING</span>
+          </span>
+          <span class="wm-set">
+            <span class="wm-f">AI MARKETING</span><span>LLMO</span><span class="wm-s">GENERATIVE AI OPTIMIZATION</span><span class="wm-f">SEO</span><span>AI CHATBOT</span><span class="wm-s">DATA DRIVEN</span><span class="wm-f">GA4 ANALYTICS</span><span>KEEP IMPROVING</span>
+          </span>
         </div>
       </div>
       <div class="word-marquee word-marquee--2">
         <div class="word-marquee__inner">
-          <span class="word-marquee__text">WEB TOTAL MARKETING&ensp;✦&ensp;AI AUTOMATION&ensp;✦&ensp;CLARITY&ensp;✦&ensp;MULTILINGUAL&ensp;✦&ensp;IMPROVEMENT&ensp;✦&ensp;</span>
-          <span class="word-marquee__text">WEB TOTAL MARKETING&ensp;✦&ensp;AI AUTOMATION&ensp;✦&ensp;CLARITY&ensp;✦&ensp;MULTILINGUAL&ensp;✦&ensp;IMPROVEMENT&ensp;✦&ensp;</span>
+          <span class="wm-set">
+            <span class="wm-f">WEB TOTAL MARKETING</span><span>AI AUTOMATION</span><span class="wm-s">APPROVAL BASED AI</span><span class="wm-f">CLARITY</span><span>MULTILINGUAL</span><span class="wm-s">KEEP IMPROVING</span><span class="wm-f">IMPROVEMENT</span>
+          </span>
+          <span class="wm-set">
+            <span class="wm-f">WEB TOTAL MARKETING</span><span>AI AUTOMATION</span><span class="wm-s">APPROVAL BASED AI</span><span class="wm-f">CLARITY</span><span>MULTILINGUAL</span><span class="wm-s">KEEP IMPROVING</span><span class="wm-f">IMPROVEMENT</span>
+          </span>
         </div>
       </div>
     </div>
@@ -1154,6 +1163,6 @@
   </div>
 </div>
 
-<script src="script.js"></script>
+<script src="script.js?v=20260801a"></script>
 </body>
 </html>
