@@ -455,18 +455,30 @@ small { font-size: 0.75em; }
   pointer-events: none;
   opacity: var(--wordline-opacity);
 }
-.word-marquee--1 { top: 20%; transform: rotate(var(--wordline-angle)); }
-.word-marquee--2 { bottom: 8%; transform: rotate(var(--wordline-angle)); }
+.word-marquee { transform: rotate(var(--wordline-angle)); }
+/* 8本を縦に等間隔配置（ヒーロー高さ基準） */
+.word-marquee:nth-child(1) { top: 2%; }
+.word-marquee:nth-child(2) { top: 15%; }
+.word-marquee:nth-child(3) { top: 28%; }
+.word-marquee:nth-child(4) { top: 41%; }
+.word-marquee:nth-child(5) { top: 54%; }
+.word-marquee:nth-child(6) { top: 67%; }
+.word-marquee:nth-child(7) { top: 80%; }
+.word-marquee:nth-child(8) { top: 93%; }
 .word-marquee__inner {
   display: flex;
   width: max-content;
   will-change: transform;
   animation: wordSlide var(--wordline-duration) linear infinite;
 }
-/* 2本目は少しゆっくり（同方向のまま速度差で奥行きを出す） */
-.word-marquee--2 .word-marquee__inner {
-  animation-duration: calc(var(--wordline-duration) * 1.3);
-}
+/* 速度と開始位置をラインごとにずらし、柄が縦に揃わないようにする */
+.word-marquee:nth-child(2) .word-marquee__inner { animation-duration: calc(var(--wordline-duration) * 1.25); animation-delay: -9s; }
+.word-marquee:nth-child(3) .word-marquee__inner { animation-duration: calc(var(--wordline-duration) * 0.9);  animation-delay: -21s; }
+.word-marquee:nth-child(4) .word-marquee__inner { animation-duration: calc(var(--wordline-duration) * 1.15); animation-delay: -5s; }
+.word-marquee:nth-child(5) .word-marquee__inner { animation-duration: calc(var(--wordline-duration) * 1.05); animation-delay: -30s; }
+.word-marquee:nth-child(6) .word-marquee__inner { animation-duration: calc(var(--wordline-duration) * 1.35); animation-delay: -14s; }
+.word-marquee:nth-child(7) .word-marquee__inner { animation-duration: calc(var(--wordline-duration) * 0.95); animation-delay: -25s; }
+.word-marquee:nth-child(8) .word-marquee__inner { animation-duration: calc(var(--wordline-duration) * 1.2);  animation-delay: -11s; }
 /* セット（A/B複製が同幅になるよう gap ぶんの padding-right を持つ） */
 .wm-set {
   display: inline-flex;
