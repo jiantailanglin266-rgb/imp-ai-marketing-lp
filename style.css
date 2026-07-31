@@ -50,6 +50,10 @@
   --wordline-size: clamp(38px, 7vw, 84px);          /* 文字サイズ */
   --wordline-duration: 46s;                         /* 1ループの時間 */
   --wordline-angle: -10deg;                         /* 傾き */
+
+  /* ---- ヒーロー背景のゴールドグラデーションレイヤー ---- */
+  --gold: #E8C25A;                                  /* ゴールドの基準色 */
+  --gold-opacity: 0.3;                              /* レイヤーの強さ */
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -409,6 +413,24 @@ small { font-size: 0.75em; }
 @keyframes aurora {
   0%   { transform: translate(0, 0) scale(1); }
   100% { transform: translate(6%, -8%) scale(1.15); }
+}
+
+/* ゴールドのグラデーションレイヤー：
+   斜めの光波＋右上のグロー。screen合成でネイビーに金の光だけを乗せる */
+.hero__gold {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: var(--gold-opacity);
+  mix-blend-mode: screen;
+  background:
+    linear-gradient(115deg,
+      transparent 30%,
+      rgba(232, 194, 90, 0.35) 46%,
+      rgba(245, 214, 130, 0.18) 52%,
+      transparent 68%),
+    radial-gradient(720px 480px at 88% 8%, rgba(232, 194, 90, 0.45), transparent 65%),
+    radial-gradient(560px 420px at 6% 92%, rgba(200, 158, 60, 0.3), transparent 60%);
 }
 
 /* 斜めワードマーキー（AI系ワードが流れる赤の装飾ライン） */
